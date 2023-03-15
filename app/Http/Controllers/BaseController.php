@@ -3,16 +3,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use function PHPUnit\Framework\isNull;
 
 class BaseController extends Controller
 {
 
-    public function sendResponse($result,$msg): \Illuminate\Http\JsonResponse
+    public function sendResponse($result, $msg = null): \Illuminate\Http\JsonResponse
     {
-        $response=[
-            'success'=>true,
-            'message'=>$msg,
-        ];
+        $response = ['success'=>true];
+        if (!empty($msg)) $response['message'] = $msg;
         if(!empty($result)) $response['data'] = $result;
         return response()->json($response, 200);
     }

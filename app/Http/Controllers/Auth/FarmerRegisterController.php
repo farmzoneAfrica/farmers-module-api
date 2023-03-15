@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\FarmerRegisterRequest;
+use App\Http\Requests\FarmerRegisterVerifyOTPRequest;
 use App\Http\Requests\FarmerStoreKycRequest;
 use App\Models\User;
 use App\Services\Auth\FarmerRegisterServices;
@@ -11,20 +12,14 @@ use Illuminate\Http\JsonResponse;
 
 class FarmerRegisterController extends BaseController
 {
-    /**
-     * Handle the incoming request.
-     * @param FarmerRegisterRequest $request
-     * @param FarmerRegisterServices $farmerRegisterServices
-     * @return JsonResponse
-     */
-    public function index(FarmerRegisterRequest $request, FarmerRegisterServices $farmerRegisterServices): JsonResponse
+    public function index(FarmerRegisterRequest $request, FarmerRegisterServices $services): JsonResponse
     {
-        return $farmerRegisterServices->register($request);
+        return $services->register($request);
     }
 
-    public function verifyOTP()
+    public function verifyOTP(FarmerRegisterVerifyOTPRequest $request, FarmerRegisterServices $services)
     {
-
+        return $services->verifyOTP($request);
     }
 
     public function kyc(FarmerStoreKycRequest $request, FarmerRegisterServices $farmerRegisterServices): JsonResponse

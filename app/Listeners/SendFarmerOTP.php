@@ -13,7 +13,7 @@ class SendFarmerOTP
     public function handle(object $event): void
     {
         $user = $event->user;
-        Otp::generate($user->id);
+        Otp::setKey('farmer-reg')->generate($user->id);
         //send OTP to phone number
     }
 }

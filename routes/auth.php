@@ -9,8 +9,9 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('farmer')->group(function () {
-    Route::post('register', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'index'])->name('farmer.register');
-    Route::post('register/kyc', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'index'])->name('farmer.register.kyc');
+    Route::post('register', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'index']);
+    Route::post('verify-otp', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'verifyOTP'])->middleware(['auth:sanctum', 'onboarding.access']);
+    Route::post('register/kyc', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'index'])->middleware(['auth:sanctum', 'onboarding.access']);
 });
 
 

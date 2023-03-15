@@ -14,11 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});*/
-
 Route::prefix('states')->group(function () {
-    Route::get('', [\App\Http\Controllers\StateController::class, 'index']);
+    Route::get('/', [\App\Http\Controllers\StateController::class, 'index']);
     Route::get('{id}/lgas', [\App\Http\Controllers\StateController::class, 'lgas']);
+    Route::get('{id}/wards', [\App\Http\Controllers\StateController::class, 'wards']);
 });
