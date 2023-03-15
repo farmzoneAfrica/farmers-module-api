@@ -14,10 +14,16 @@ return new class extends Migration
         Schema::create('farms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('farm_address_id'); //still thinking about reasons for normalizing the farms/farm_addresses tables
-            $table->string('address')->nullable();
-            $table->string('landmark')->nullable();
-            $table->string('size');
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->foreignId('state_id');
+            $table->foreignId('local_government_id');
+            $table->foreignId('ward_id');
+            $table->string('address', 255)->nullable();
+            $table->string('landmark', 255)->nullable();
+            $table->integer('size');
+            $table->string('unit');
+            $table->enum('status', ['irrigation']);
             $table->timestamps();
         });
     }

@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Bavix\Wallet\Traits\HasWallet;
-use Bavix\Wallet\Interfaces\Wallet;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable, HasWallet;
 
@@ -20,11 +19,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_type_id',
         'first_name',
         'last_name',
         'email',
         'password',
         'phone',
+        'state_id',
+        'local_government_id',
+        'ward_id',
+        'accept_terms',
+        'profile_picture',
+        'ip',
+        'phone_verified_at'
     ];
 
     /**
@@ -44,5 +51,22 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'phone_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return mixed
+     */
+    public function getJWTIdentifier(): mixed
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * @return array
+     */
+    public function getJWTCustomClaims(): array
+    {
+        return [];
+    }
 }

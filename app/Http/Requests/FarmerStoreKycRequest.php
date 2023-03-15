@@ -9,7 +9,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
-class FarmerRegisterRequest extends FormRequest
+class FarmerStoreKycRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,14 +27,8 @@ class FarmerRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['string', 'email', 'max:255', 'unique:'.User::class],
-            'phone' => ['required','string', 'max:255', 'unique:'.User::class],
-            'state_id' => ['required','int', 'exists:states,id'],
-            'local_government_id' => ['required','int', 'exists:local_governments,id'],
-            'ward_id' => ['int', 'exists:wards,id'],
-            'accept_terms'=>['required', 'int', Rule::in(1)]
+
         ];
     }
 
@@ -46,10 +40,7 @@ class FarmerRegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'first_name.required' => 'First name is required',
-            'last_name.required' => 'Last name is required',
-            'email.required' => 'Email is required',
-            'state_id.required' => 'Select a state.',
+            'email.email' => 'Enter a valid email',
             'local_government_id.required' => 'Select a local government',
             'accept_terms.required' => 'Accept terms & conditions',
         ];
@@ -77,9 +68,7 @@ class FarmerRegisterRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'email' => 'email address',
-            'state_id'=>'state',
-            'local_government_id'=>'local government',
+            'email' => 'email address'
         ];
     }
 

@@ -2,38 +2,47 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\BaseController;
 use App\Http\Requests\FarmerRegisterRequest;
+use App\Http\Requests\FarmerStoreKycRequest;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Http\JsonResponse;
 
-class FarmerRegisterController extends Controller
+class FarmerRegisterController extends BaseController
 {
     /**
      * Handle the incoming request.
      * @param FarmerRegisterRequest $request
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function __invoke(FarmerRegisterRequest $request)
+    public function index(FarmerRegisterRequest $request): JsonResponse
+    {
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'phone' => $request->phone,
+            'state_id' => $request->state_id,
+            'local_government_id' => $request->local_government_id,
+            'ward_id' => $request->ward_id,
+            'user_type_id'=>1
+        ]);
+
+        return $this->sendResponse($user, 'Registration successfully');
+    }
+
+    public function kyc(FarmerStoreKycRequest $request): JsonResponse
     {
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'state_id' => $request->state_id,
             'local_government_id' => $request->local_government_id,
             'ward_id' => $request->ward_id,
-            'accept_terms' => $request->accept_terms
+            'user_type_id'=>1
         ]);
 
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return response()->noContent();
+        return $this->sendResponse($user, 'Registration successfully');
     }
 }

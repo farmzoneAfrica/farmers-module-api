@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('is_admin')->default('0'); // only admin users would have roles and permissions
+            $table->boolean('is_admin')->default('0'); // only admin, agents, supervisors and other in-house users would have roles and permissions
             $table->timestamps();
         });
     }

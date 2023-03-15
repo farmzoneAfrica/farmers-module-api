@@ -7,26 +7,23 @@ use Illuminate\Support\Facades\Config;
 class BaseController extends Controller
 {
 
-    public function sendResponse($result,$msg){
+    public function sendResponse($result,$msg): \Illuminate\Http\JsonResponse
+    {
         $response=[
             'success'=>true,
             'message'=>$msg,
         ];
-        if(!empty($result)){
-            $response['data']=$result;
-        }
+        if(!empty($result)) $response['data'] = $result;
         return response()->json($response, 200);
     }
 
-    public function sendError($error_msg, $error=null){
+    public function sendError($error_msg, $error=null): \Illuminate\Http\JsonResponse
+    {
         $response=[
             'success'=>false,
             'message'=>$error_msg,
         ];
-        if(isset($error)){
-            $response['errors']= $error;
-        }
-
+        if(isset($error)) $response['errors'] = $error;
         return response()->json($response, 400);
     }
 
@@ -43,12 +40,11 @@ class BaseController extends Controller
     {
         if (isset($_COOKIE[$cookie_name])) {
             return $_COOKIE[$cookie_name];
-        } else {
-            return false;
         }
+        return false;
     }
     // Has cookie
-    public function hasCookie($cookie_name)
+    public function hasCookie($cookie_name): bool
     {
         if (isset($_COOKIE[$cookie_name])) {
             return true;
@@ -64,7 +60,6 @@ class BaseController extends Controller
         if (isset($_COOKIE[$cookie_name])) {
             unset($_COOKIE[$cookie_name]);
             setcookie($cookie_name, '', time() - 2147483647, '/',  $domain);
-
         }
     }
 
@@ -72,9 +67,9 @@ class BaseController extends Controller
     public function clearCookie()
     {
         $domain = ($_SERVER['SERVER_NAME'] != 'localhost') ? $_SERVER['SERVER_NAME'] : '.'.$_SERVER['SERVER_NAME'];
-        if (isset($_COOKIE['Point_token'])) {
-            unset($_COOKIE['Point_token']);
-            setcookie('Point_token', '', time() - 2147483647, '/', $domain); // empty value and old timestamp
+        if (isset($_COOKIE['novel_token'])) {
+            unset($_COOKIE['novel_token']);
+            setcookie('novel_token', '', time() - 2147483647, '/', $domain); // empty value and old timestamp
         }
     }
 
