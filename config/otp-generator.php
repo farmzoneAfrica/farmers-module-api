@@ -10,7 +10,7 @@ return [
     | By default = 10 minutes
     |
     */
-    'validity' => env('OTP_VALIDITY_TIME', 10),
+    'validity' => env('OTP_VALIDITY_TIME', 15),
     /*
     |--------------------------------------------------------------------------
     |  Length of the generated OTP
@@ -37,8 +37,8 @@ return [
     | Generated OPT Type
     |-------------------------------------------------------------------------
     |
-    | if true the geneated OTP contains only digits. ex : 654321
-    | f false the geneated OTP contains only alpanumeric. ex : 21ab43
+    | if true the generated OTP contains only digits. ex : 654321
+    | f false the generated OTP contains only alpanumeric. ex : 21ab43
     */
     'onlyDigits' => true,
 
@@ -47,7 +47,7 @@ return [
     | Use same token to resend the OTP
     |-------------------------------------------------------------------------
     |
-    | if true the the second time onwards geneated OTPs same a the first one (Only OTP validation time)
+    | if true the the second time onwards generated OTPs same a the first one (Only OTP validation time)
     | if false each time unique OPT will be generated
     */
     'useSameToken' => false,
@@ -69,5 +69,5 @@ return [
     | Once the limit reached, the end-user can't able to generate OPT until the OTP deleteOldOtps time is over.
     |
     */
-    'maximumOtpsAllowed' => env('MAXIMUM_OTPS_ALLOWED', 5),
+    'maximumOtpsAllowed' => env('MAXIMUM_OTPS_ALLOWED', 10),
 ];

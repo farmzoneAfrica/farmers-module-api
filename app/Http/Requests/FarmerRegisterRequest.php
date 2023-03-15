@@ -29,11 +29,10 @@ class FarmerRegisterRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['string', 'email', 'max:255', 'unique:'.User::class],
-            'phone' => ['required','string', 'max:255', 'unique:'.User::class],
+            'phone' => ['required','string', 'max:255'],
             'state_id' => ['required','int', 'exists:states,id'],
-            'local_government_id' => ['required','int', 'exists:local_governments,id'],
-            'ward_id' => ['int', 'exists:wards,id'],
+            //'local_government_id' => ['required','int', 'exists:local_governments,id'],
+            //'ward_id' => ['int', 'exists:wards,id'],
             'accept_terms'=>['required', 'int', Rule::in(1)]
         ];
     }
