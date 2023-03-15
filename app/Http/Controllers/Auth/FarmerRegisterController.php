@@ -17,7 +17,7 @@ class FarmerRegisterController extends BaseController
         return $services->register($request);
     }
 
-    public function verifyOTP(FarmerRegisterVerifyOTPRequest $request, FarmerRegisterServices $services)
+    public function verifyOTP(FarmerRegisterVerifyOTPRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->verifyOTP($request);
     }
