@@ -58,6 +58,9 @@ class FarmerRegisterController extends BaseController
      *          )
      *      )
      * )
+     * @param FarmerRegisterRequest $request
+     * @param FarmerRegisterServices $services
+     * @return JsonResponse
      */
     public function index(FarmerRegisterRequest $request, FarmerRegisterServices $services): JsonResponse
     {
