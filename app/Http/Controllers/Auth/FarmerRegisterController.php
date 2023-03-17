@@ -35,18 +35,22 @@ class FarmerRegisterController extends BaseController
      *                 ),
      *                 @OA\Property(
      *                     property="state_id",
-     *                     type="string"
+     *                     type="integer"
      *                 ),
      *                 @OA\Property(
      *                     property="local_government_id",
-     *                     type="string"
+     *                     type="integer"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="ward_id",
+     *                     type="integer"
      *                 ),
      *                 @OA\Property(
      *                     property="accept_terms",
      *                     type="boolean"
      *                 ),
      *
-     *                 example={"first_name": "Samuel", "last_name": "Sammy", "phone": "08012345678","state_id": 1, "local_government_id": 1, "accept_terms": 1}
+     *                 example={"first_name": "Samuel", "last_name": "Sammy", "phone": "08012345678","state_id": 1, "local_government_id": 1,"ward_id": 1, "accept_terms": 1}
      *             )
      *         )
      *     ),
@@ -66,6 +70,37 @@ class FarmerRegisterController extends BaseController
     {
         return $services->register($request);
     }
+
+    /**
+     * Get List of States
+     * @OA\Post (
+     *     path="/api/auth/farmer/verify-otp",
+     *     tags={"Farmer Register Verify OTP"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="otp",
+     *                     type="string"
+     *                 ),     *
+     *                 example={"otp": "123456"}
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
+     *      @OA\Response(
+     *          response=401,
+     *          description="unauthorized",
+     *          @OA\JsonContent(
+     *              @OA\Property(),
+     *          )
+     *      )
+     * )
+     * @param FarmerRegisterRequest $request
+     * @param FarmerRegisterServices $services
+     * @return JsonResponse
+     */
 
     public function verifyOTP(FarmerRegisterVerifyOTPRequest $request, FarmerRegisterServices $services): JsonResponse
     {

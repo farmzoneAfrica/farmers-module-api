@@ -28,10 +28,13 @@
                                         "type": "string"
                                     },
                                     "state_id": {
-                                        "type": "string"
+                                        "type": "integer"
                                     },
                                     "local_government_id": {
-                                        "type": "string"
+                                        "type": "integer"
+                                    },
+                                    "ward_id": {
+                                        "type": "integer"
                                     },
                                     "accept_terms": {
                                         "type": "boolean"
@@ -44,6 +47,7 @@
                                     "phone": "08012345678",
                                     "state_id": 1,
                                     "local_government_id": 1,
+                                    "ward_id": 1,
                                     "accept_terms": 1
                                 }
                             }
@@ -61,6 +65,55 @@
                                             "type": "boolean",
                                             "example": "false"
                                         }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/farmer/verify-otp": {
+            "post": {
+                "tags": [
+                    "Farmer Register Verify OTP"
+                ],
+                "summary": "Get List of States",
+                "operationId": "7752d5000d00e535186075e9e2f0b164",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "otp": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "otp": "123456"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {}
                                     },
                                     "type": "object"
                                 }
