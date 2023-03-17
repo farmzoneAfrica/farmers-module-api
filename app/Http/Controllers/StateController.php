@@ -66,10 +66,53 @@ class StateController extends BaseController
 
 
     /**
-     * @param Request $request
-     * @param StateService $service
-     * @param string $state_id
-     * @return \Illuminate\Http\JsonResponse
+     * Get List of Local Governments in a State
+     * @OA\Get (
+     *     path="/api/states/{state_id}/lgas",
+     *     tags={"States"},
+     *     @OA\Parameter(
+     *         name="sort_field",
+     *         in="query",
+     *         description="A list of things.",
+     *         required=false,
+     *         example="id"
+     *     ),
+     *     @OA\Parameter(
+     *         name="sort_type",
+     *         in="query",
+     *         description="A list of things.",
+     *         required=false,
+     *         example="asc"
+     *     ),
+     *     @OA\Parameter(
+     *         name="limit",
+     *         in="query",
+     *         description="number of states to return per page",
+     *         required=false,
+     *         example="-1"
+     *     ),
+     *     @OA\Parameter(
+     *         name="search",
+     *         in="query",
+     *         description="Search term (state name)",
+     *         required=false,
+     *         example="lagos"
+     *     ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="success",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="success", type="boolean", example=true)
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="invalid",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="success", type="boolean", example="false"),
+     *          )
+     *      )
+     * )
      */
     public function lgas(Request $request, StateService $service, string $state_id): \Illuminate\Http\JsonResponse
     {

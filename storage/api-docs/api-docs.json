@@ -78,6 +78,79 @@
                     }
                 }
             }
+        },
+        "/api/states/{state_id}/lgas": {
+            "get": {
+                "tags": [
+                    "States"
+                ],
+                "summary": "Get List of Local Governments in a State",
+                "operationId": "5ac010df0363dbd0e97d5ce6a9052d6d",
+                "parameters": [
+                    {
+                        "name": "sort_field",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "id"
+                    },
+                    {
+                        "name": "sort_type",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "asc"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "number of states to return per page",
+                        "required": false,
+                        "example": "-1"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search term (state name)",
+                        "required": false,
+                        "example": "lagos"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
