@@ -6,6 +6,70 @@
         "version": "1.0"
     },
     "paths": {
+        "/api/auth/farmer/register": {
+            "post": {
+                "tags": [
+                    "Farmer Register"
+                ],
+                "summary": "Get List of States",
+                "operationId": "842eded57600dc6274cf7a199427a68a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "state_id": {
+                                        "type": "string"
+                                    },
+                                    "local_government_id": {
+                                        "type": "string"
+                                    },
+                                    "accept_terms": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "first_name": "Samuel",
+                                    "last_name": "Sammy",
+                                    "phone": "08012345678",
+                                    "state_id": 1,
+                                    "local_government_id": 1,
+                                    "accept_terms": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/states": {
             "get": {
                 "tags": [
@@ -79,14 +143,99 @@
                 }
             }
         },
-        "/api/states/{state_id}/lgas": {
+        "/api/local-governments/{state_id}": {
             "get": {
                 "tags": [
-                    "States"
+                    "Local Governments"
                 ],
                 "summary": "Get List of Local Governments in a State",
-                "operationId": "5ac010df0363dbd0e97d5ce6a9052d6d",
+                "operationId": "63423ba4b0b19c06181c50a1a0d3ebac",
                 "parameters": [
+                    {
+                        "name": "state_id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true
+                    },
+                    {
+                        "name": "sort_field",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "id"
+                    },
+                    {
+                        "name": "sort_type",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "asc"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "number of states to return per page",
+                        "required": false,
+                        "example": "-1"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search term (state name)",
+                        "required": false,
+                        "example": "lagos"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/wards/{local_government_id}": {
+            "get": {
+                "tags": [
+                    "Wards"
+                ],
+                "summary": "Get List of Wards in a Local Government",
+                "operationId": "6a538dfe1f3bd00fbd7d7fa264aed2ad",
+                "parameters": [
+                    {
+                        "name": "local_government_id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true
+                    },
                     {
                         "name": "sort_field",
                         "in": "query",

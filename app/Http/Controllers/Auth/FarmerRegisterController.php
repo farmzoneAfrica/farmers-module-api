@@ -12,6 +12,53 @@ use Illuminate\Http\JsonResponse;
 
 class FarmerRegisterController extends BaseController
 {
+    /**
+     * Get List of States
+     * @OA\Post (
+     *     path="/api/auth/farmer/register",
+     *     tags={"Farmer Register"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="first_name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="last_name",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="phone",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="state_id",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="local_government_id",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="accept_terms",
+     *                     type="boolean"
+     *                 ),
+     *
+     *                 example={"first_name": "Samuel", "last_name": "Sammy", "phone": "08012345678","state_id": 1, "local_government_id": 1, "accept_terms": 1}
+     *             )
+     *         )
+     *     ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="invalid",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="success", type="boolean", example="false"),
+     *          )
+     *      )
+     * )
+     */
     public function index(FarmerRegisterRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->register($request);

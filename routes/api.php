@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('states')->group(function () {
-    Route::get('/', [\App\Http\Controllers\StateController::class, 'index']);
-    Route::get('{id}/lgas', [\App\Http\Controllers\StateController::class, 'lgas']);
-    Route::get('{id}/wards', [\App\Http\Controllers\StateController::class, 'wards']);
-});
+Route::get('states', [\App\Http\Controllers\StateController::class, 'index']);
+Route::get('local-governments/{state_id}', [\App\Http\Controllers\StateController::class, 'lgas']);
+Route::get('wards/{local_government_id}', [\App\Http\Controllers\StateController::class, 'wards']);
