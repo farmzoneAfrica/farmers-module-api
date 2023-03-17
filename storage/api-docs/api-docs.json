@@ -1,0 +1,83 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Novel AG API",
+        "description": "Agritech Solution API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/states": {
+            "get": {
+                "tags": [
+                    "States"
+                ],
+                "summary": "Get List of States",
+                "operationId": "4136acf478452d9e777d0a2ef5ef82ef",
+                "parameters": [
+                    {
+                        "name": "sort_field",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "id"
+                    },
+                    {
+                        "name": "sort_type",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "asc"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "number of states to return per page",
+                        "required": false,
+                        "example": "-1"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search term (state name)",
+                        "required": false,
+                        "example": "lagos"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -23,8 +23,8 @@ class StateService extends BaseController
         $this->perPage = \request()->limit ?? '-1';
         $this->pageStart = \Request::get('page', 1);
         $this->offSet = ($this->pageStart * $this->perPage) - $this->perPage;
-        $this->order = $request->SortField ?? 'id';
-        $this->dir = $request->SortType ?? 'asc';
+        $this->order = $request->sort_field ?? 'id';
+        $this->dir = $request->sort_type ?? 'asc';
     }
 
     public function states(Request $request,)

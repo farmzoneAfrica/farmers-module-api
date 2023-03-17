@@ -8,6 +8,15 @@ use function PHPUnit\Framework\isNull;
 class BaseController extends Controller
 {
 
+    /**
+     * @OA\OpenApi(
+     *     @OA\Info(
+     *         version="1.0",
+     *         title="Novel AG API",
+     *         description="Agritech Solution API",
+     *     )
+     * )
+     */
     public function sendResponse($result, $msg = null): \Illuminate\Http\JsonResponse
     {
         $response = ['success'=>true];
