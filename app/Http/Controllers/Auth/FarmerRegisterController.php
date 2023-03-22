@@ -97,7 +97,7 @@ class FarmerRegisterController extends BaseController
      *          )
      *      )
      * )
-     * @param FarmerRegisterRequest $request
+     * @param FarmerRegisterVerifyOTPRequest $request
      * @param FarmerRegisterServices $services
      * @return JsonResponse
      */
