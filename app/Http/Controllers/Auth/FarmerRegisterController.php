@@ -107,7 +107,7 @@ class FarmerRegisterController extends BaseController
         return $services->verifyOTP($request);
     }
 
-    public function kyc(FarmerStoreKycRequest $request, FarmerRegisterServices $farmerRegisterServices): JsonResponse
+    public function kyc(FarmerStoreKycRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         $user = User::create([
             'first_name' => $request->first_name,
@@ -122,5 +122,4 @@ class FarmerRegisterController extends BaseController
 
         return $this->sendResponse($user, 'Registration successfully');
     }
-
 }
