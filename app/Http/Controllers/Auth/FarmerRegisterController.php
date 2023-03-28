@@ -69,7 +69,7 @@ class FarmerRegisterController extends BaseController
     public function index(FarmerRegisterRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->register($request);
-        //test
+        ///test
     }
 
     /**
