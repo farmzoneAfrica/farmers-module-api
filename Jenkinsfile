@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Deploy to server') {
             steps{
-                sh 'scp ${WORKSPACE}/* dspyder1@${staging_server}:var/www/html/laravel/'
+                sh 'scp -r ${WORKSPACE}/* dspyder1@${staging_server}:var/www/html/laravel/'
             }
         }
     }
