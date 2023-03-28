@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c47ce46b135803afacb27494b0e1f78",
+    "content-hash": "71542a8b84be8a5597b1aacbf67b7479",
     "packages": [
         {
             "name": "bavix/laravel-wallet",
@@ -27,7 +27,7 @@
                 "ext-pdo": "*",
                 "illuminate/contracts": "^9.0|^10.0",
                 "illuminate/database": "^9.37|^10.0",
-                "php": "^8.2",
+                "php": "^8.0",
                 "ramsey/uuid": "^4.0"
             },
             "require-dev": {
@@ -3459,16 +3459,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.13",
+            "version": "v0.11.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "722317c9f5627e588788e340f29b923e58f92f54"
+                "reference": "8c2e264def7a8263a68ef6f0b55ce90b77d41e17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/722317c9f5627e588788e340f29b923e58f92f54",
-                "reference": "722317c9f5627e588788e340f29b923e58f92f54",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/8c2e264def7a8263a68ef6f0b55ce90b77d41e17",
+                "reference": "8c2e264def7a8263a68ef6f0b55ce90b77d41e17",
                 "shasum": ""
             },
             "require": {
@@ -3529,9 +3529,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.13"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.14"
             },
-            "time": "2023-03-21T14:22:44+00:00"
+            "time": "2023-03-28T03:41:01+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -9038,7 +9038,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2"
+        "php": "^8.1|^8.2"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
