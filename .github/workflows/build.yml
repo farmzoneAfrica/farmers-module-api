@@ -36,5 +36,5 @@ jobs:
         password: ${{ secrets.REMOTE_PASSWORD }}
         script: |
           cd /var/www/html/api/laravel
-          ../../deploy.sh
+          ./deploy.sh
 
