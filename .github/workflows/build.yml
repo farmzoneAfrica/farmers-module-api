@@ -37,13 +37,11 @@ jobs:
         script: |
           cd /var/www/html/api/laravel
           echo "Deploying application ..."
-          (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
           git fetch origin deploy
           git reset --hard origin/deploy
           composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan migrate --force
           php artisan optimize
           echo "" | sudo -S service php8.1-fpm reload
-          php artisan up
           echo "Application deployed!"
 
