@@ -33,9 +33,9 @@ jobs:
         username: ${{ secrets.REMOTE_USERNAME }}
         password: ${{ secrets.REMOTE_PASSWORD }}
         script: |
-          cd /var/www/laravel/laravel-api
+          cd /var/www/laravel
           echo "Deploying application ..."
-          git clone https://github.com/farmzoneAfrica/laravel-api.git
+          git fetch
           git reset --hard HEAD
           composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan optimize
