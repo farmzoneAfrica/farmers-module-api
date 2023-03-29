@@ -12,6 +12,7 @@ Route::prefix('farmer')->group(function () {
     Route::post('register', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'index']);
     Route::post('verify-otp', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'verifyOTP'])->middleware(['auth:sanctum', 'onboarding.access']);
     Route::post('register/kyc', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'index'])->middleware(['auth:sanctum', 'onboarding.access']);
+    Route::post('register/resend-otp', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'resendOTP'])->middleware(['auth:sanctum', 'onboarding.access']);
 });
 
 

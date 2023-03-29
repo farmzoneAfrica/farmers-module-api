@@ -24,6 +24,7 @@ class FarmerRegisterServices extends BaseController
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'phone' => $request->phone,
+                'email' => $request->email,
                 'state_id' => $request->state_id,
                 'local_government_id' => $request->local_government_id,
                 'ward_id' => $request->ward_id,
@@ -42,10 +43,10 @@ class FarmerRegisterServices extends BaseController
         return ($verify->status) ? $this->sendResponse($verify->message) : $this->sendError($verify->message);
     }
 
-    public function resendOTP(FarmerRegisterVerifyOTPRequest $request): JsonResponse
+    public function resendOTP(): JsonResponse
     {
-        /*$user = auth()->user();
-        $verify = Otp::setKey('farmer-reg')->validate($user->id, $request->otp);
-        return ($verify->status) ? $this->sendResponse($verify->message) : $this->sendError($verify->message);*/
+        $user = auth()->user();
+        $resend = Otp::setKey('farmer-reg')->generate($user->id);
+        return ($resend->status) ? $this->sendResponse($resend->message) : $this->sendError($resend->message);
     }
 }

@@ -30,6 +30,7 @@ class FarmerRegisterRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'phone' => ['required','string', 'max:255'],
+            'email' => ['email','string', 'max:255'],
             //'state_id' => ['required','int', 'exists:states,id'],
             //'local_government_id' => ['required','int', 'exists:local_governments,id'],
             //'ward_id' => ['int', 'exists:wards,id'],
