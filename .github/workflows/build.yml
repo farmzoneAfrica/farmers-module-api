@@ -27,3 +27,12 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USERNAME }}
+        password: ${{ secrets.REMOTE_PASSWORD }}
+        port: ${{ secrets.REMOTE_PORT }}
+        script: 'cd /var/www/html/api/laravel && ./deploy.sh'
+
