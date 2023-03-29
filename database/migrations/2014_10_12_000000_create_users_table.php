@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_type_id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('phone')->nullable();
+            $table->string('phone');
             $table->string('email')->nullable();
             $table->string('password')->nullable();
             $table->string('profile_picture')->nullable();
