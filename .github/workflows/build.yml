@@ -40,7 +40,8 @@ jobs:
         script: |
           cd /var/www/html/api/laravel
           echo "Deploying application ..."
-          git clone https://github.com/farmzoneAfrica/laravel-api.git
+          git fetch
+          git reset --hard HEAD
           composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan migrate --force
           php artisan optimize
