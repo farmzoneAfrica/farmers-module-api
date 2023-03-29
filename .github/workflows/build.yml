@@ -33,7 +33,7 @@ jobs:
         username: ${{ secrets.REMOTE_USERNAME }}
         password: ${{ secrets.REMOTE_PASSWORD }}
         script: |
-          cd /var/www/html/api/laravel
+          cd /var/www/laravel/laravel-api
           echo "Deploying application ..."
           git fetch
           git reset --hard HEAD
