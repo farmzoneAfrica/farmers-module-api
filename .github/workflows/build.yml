@@ -35,7 +35,9 @@ jobs:
         script: |
           cd /var/www/laravel
           echo "Deploying application ..."
+          git config --global --add safe.directory /var/www/laravel
           git fetch
+          git config --global --add safe.directory /var/www/laravel
           git reset --hard HEAD
           composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan optimize
