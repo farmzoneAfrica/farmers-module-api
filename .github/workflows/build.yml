@@ -42,5 +42,5 @@ jobs:
           composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan optimize
           echo "" | sudo -S service php8.1-fpm reload
-          echo "Application deployed!"
+          echo "Application deployed!."
 
