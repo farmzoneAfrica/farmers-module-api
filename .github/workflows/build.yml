@@ -35,10 +35,9 @@ jobs:
         script: |
           cd /var/www/laravel/laravel-api
           echo "Deploying application ..."
-          git fetch
+          git clone https://github.com/farmzoneAfrica/laravel-api.git
           git reset --hard HEAD
           composer install --no-interaction --prefer-dist --optimize-autoloader
-          php artisan migrate --force
           php artisan optimize
           echo "" | sudo -S service php8.1-fpm reload
           echo "Application deployed!"
