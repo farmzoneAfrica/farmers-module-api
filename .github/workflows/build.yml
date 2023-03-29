@@ -37,7 +37,7 @@ jobs:
         script: |
           cd /var/www/html/api/laravel
           echo "Deploying application ..."
-          git fetch origin deploy
+          git fetch origin main
           git reset --hard origin/deploy
           composer install --no-interaction --prefer-dist --optimize-autoloader
           php artisan migrate --force
