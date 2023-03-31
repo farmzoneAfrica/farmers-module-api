@@ -19,7 +19,7 @@ class FarmerStoreKycRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photo' => 'required|file|image|mimes:jpeg,png'
+            'profile_photo' => 'required|file|image|mimes:jpeg,png'
         ];
     }
 
