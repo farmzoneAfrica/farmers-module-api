@@ -13,7 +13,7 @@ use Illuminate\Http\JsonResponse;
 class FarmerRegisterController extends BaseController
 {
     /**
-     * Get List of States
+     * Farmer Registration
      * @OA\Post (
      *     path="/api/auth/farmer/register",
      *     tags={"Farmer Register"},
@@ -69,11 +69,10 @@ class FarmerRegisterController extends BaseController
     public function index(FarmerRegisterRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->register($request);
-        ///test
     }
 
     /**
-     * Get List of States
+     * Verify OTP
      * @OA\Post (
      *     path="/api/auth/farmer/verify-otp",
      *     tags={"Farmer Register Verify OTP"},
@@ -106,6 +105,29 @@ class FarmerRegisterController extends BaseController
     public function verifyOTP(FarmerRegisterVerifyOTPRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->verifyOTP($request);
+    }
+
+    /**
+     * Regenerate OTP
+     * @OA\Get (
+     *     path="/api/auth/farmer/register/resend-otp",
+     *     tags={"Farmer Register Resend OTP"},
+     *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
+     *      @OA\Response(
+     *          response=401,
+     *          description="unauthorized",
+     *          @OA\JsonContent(
+     *              @OA\Property(),
+     *          )
+     *      )
+     * )
+     * @param FarmerRegisterServices $services
+     * @return JsonResponse
+     */
+
+    public function resendOTP(FarmerRegisterServices $services): JsonResponse
+    {
+        return $services->resendOTP();
     }
 
     public function kyc(FarmerStoreKycRequest $request, FarmerRegisterServices $services): JsonResponse

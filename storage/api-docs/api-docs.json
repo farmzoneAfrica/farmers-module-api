@@ -11,7 +11,7 @@
                 "tags": [
                     "Farmer Register"
                 ],
-                "summary": "Get List of States",
+                "summary": "Farmer Registration",
                 "operationId": "842eded57600dc6274cf7a199427a68a",
                 "requestBody": {
                     "content": {
@@ -98,6 +98,38 @@
                         }
                     }
                 },
+                "responses": {
+                    "201": {
+                        "description": "Successful created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/farmer/register/resend-otp": {
+            "get": {
+                "tags": [
+                    "Farmer Register Resend OTP"
+                ],
+                "summary": "Regenerate OTP",
+                "operationId": "5f180d1a30f668d54bd93f5dd31caafa",
                 "responses": {
                     "201": {
                         "description": "Successful created",
@@ -352,6 +384,16 @@
                         }
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Bearer 12345678",
+                "name": "Authorization",
+                "in": "header"
             }
         }
     }

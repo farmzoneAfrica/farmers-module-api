@@ -26,6 +26,6 @@ class SendFarmerOTP
             'token'=>$this->apexa_token
         ];
 
-        $response = Http::post('https://apexa.com.ng/api/v2/otp/send', $request);
+        //$response = Http::post('http://apexa.com.ng/api/v2/otp/send', $request);
     }
 }

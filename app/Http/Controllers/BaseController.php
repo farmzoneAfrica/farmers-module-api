@@ -17,11 +17,12 @@ class BaseController extends Controller
      *     )
      * )
      */
-    public function sendResponse($result, $msg = null): \Illuminate\Http\JsonResponse
+    public function sendResponse($result, $msg = null, $token = null): \Illuminate\Http\JsonResponse
     {
         $response = ['success'=>true];
         if (!empty($msg)) $response['message'] = $msg;
         if(!empty($result)) $response['data'] = $result;
+        if(!empty($token)) $response['token'] = $token;
         return response()->json($response, 200);
     }
 
