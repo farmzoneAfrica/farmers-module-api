@@ -11,19 +11,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FarmerRegisterRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules(): array
     {
         return [
@@ -38,12 +30,7 @@ class FarmerRegisterRequest extends FormRequest
         ];
     }
 
-    /**
-     * Custom message for validation
-     *
-     * @return array
-     */
-    public function messages()
+    public function messages(): array
     {
         return [
             'first_name.required' => 'First name is required',
@@ -55,12 +42,8 @@ class FarmerRegisterRequest extends FormRequest
         ];
     }
 
-    /**
-     *  Filters to be applied to the input.
-     *
-     * @return array
-     */
-    public function filters()
+
+    public function filters(): array
     {
         return [
             'email' => 'trim|lowercase',

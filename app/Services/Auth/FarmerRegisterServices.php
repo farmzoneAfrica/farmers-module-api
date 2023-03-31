@@ -1,25 +1,20 @@
 <?php
 
-
 namespace App\Services\Auth;
-
 
 use App\Events\FarmerRegistered;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\ChangePhoneNumberRequest;
 use App\Http\Requests\FarmerRegisterRequest;
 use App\Http\Requests\FarmerRegisterVerifyOTPRequest;
+use App\Http\Requests\FarmerStoreKycRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Seshac\Otp\Otp;
 
 class FarmerRegisterServices extends BaseController
 {
-    /**
-     * @param FarmerRegisterRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function register(FarmerRegisterRequest $request): \Illuminate\Http\JsonResponse
+    public function register(FarmerRegisterRequest $request): JsonResponse
     {
         $user = User::updateOrCreate(['phone' => $request->phone], [
                 'first_name' => $request->first_name,
@@ -40,13 +35,17 @@ class FarmerRegisterServices extends BaseController
     public function verifyOTP(FarmerRegisterVerifyOTPRequest $request): JsonResponse
     {
         $verify = Otp::setKey('farmer-reg')->validate(auth()->user()->id, $request->otp);
-        return ($verify->status) ? $this->sendResponse($verify->message) : $this->sendError($verify->message);
+        return ($verify->status)
+            ? $this->sendResponse($verify->message)
+            : $this->sendError($verify->message);
     }
 
     public function resendOTP(): JsonResponse
     {
         $resend = Otp::setKey('farmer-reg')->generate(auth()->user()->id);
-        return ($resend->status) ? $this->sendResponse($resend->message) : $this->sendError($resend->message);
+        return ($resend->status)
+            ? $this->sendResponse($resend->message)
+            : $this->sendError($resend->message);
     }
 
     public function changePhoneNumber(ChangePhoneNumberRequest $request): JsonResponse
@@ -56,5 +55,10 @@ class FarmerRegisterServices extends BaseController
         $user->save();
         FarmerRegistered::dispatch($user);
         return $this->sendResponse($user, 'Registration successfully', $user->createToken('x-onboarding-token')->plainTextToken);
+    }
+
+    public function updateKyc(FarmerStoreKycRequest $request)
+    {
+
     }
 }

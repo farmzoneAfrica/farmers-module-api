@@ -12,6 +12,7 @@
         "laravel/framework": "^10.5.1",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
+        "platformcommunity/bunnycdn-storage": "^0.2.0",
         "seshac/otp-generator": "^0.0.7",
         "tymon/jwt-auth": "^2.0"
     },

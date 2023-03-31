@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\ChangePhoneNumberRequest;
 use App\Http\Requests\FarmerRegisterRequest;
 use App\Http\Requests\FarmerRegisterVerifyOTPRequest;
 use App\Http\Requests\FarmerStoreKycRequest;
@@ -130,19 +131,13 @@ class FarmerRegisterController extends BaseController
         return $services->resendOTP();
     }
 
+    public function changePhoneNumber(ChangePhoneNumberRequest $request, FarmerRegisterServices $services): JsonResponse
+    {
+        return $services->changePhoneNumber($request);
+    }
+
     public function kyc(FarmerStoreKycRequest $request, FarmerRegisterServices $services): JsonResponse
     {
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'state_id' => $request->state_id,
-            'local_government_id' => $request->local_government_id,
-            'ward_id' => $request->ward_id,
-            'user_type_id'=>1
-        ]);
-
-        return $this->sendResponse($user, 'Registration successfully');
+        return $services->updateKyc($request);
     }
 }
