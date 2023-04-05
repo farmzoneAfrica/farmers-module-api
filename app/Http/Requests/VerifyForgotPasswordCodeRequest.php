@@ -7,9 +7,8 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class ForgotPasswordPostRequest extends FormRequest
+class VerifyForgotPasswordCodeRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -18,21 +17,22 @@ class ForgotPasswordPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'phone' => 'required|exists:users'
+            'otp' => 'required|exists:otps,token'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'phone.required'=>'Phone number is required.'
+            'otp.required'=>'OTP is required.',
+            'otp.exits'=>'Invalid OTP',
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'phone' => 'Phone number'
+
         ];
     }
 

@@ -28,6 +28,6 @@ class ForgotPasswordController extends BaseController
             $apexa->send();
         }
 
-        return $this->sendResponse('', 'OTP Sent');
+        return $this->sendResponse('', 'OTP Sent', $user->createToken('forgot-password')->plainTextToken);
     }
 }

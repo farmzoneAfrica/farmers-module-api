@@ -20,6 +20,11 @@ Route::prefix('farmer')->group(function () {
 
 
 Route::post('forgot-password-phone', \App\Http\Controllers\Auth\ForgotPasswordController::class)->middleware('guest')->name('forgot.password.phone');
+Route::post('verify-forgot-password-code', \App\Http\Controllers\Auth\VerifyForgotPasswordCodeController::class)->middleware(['auth:sanctum', 'forgot.password.access']);
+
+
+
+
 
 Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest')->name('register');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest')->name('login');
