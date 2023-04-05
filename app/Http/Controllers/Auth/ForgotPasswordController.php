@@ -27,6 +27,7 @@ class ForgotPasswordController extends BaseController
             $apexa = new ApexaService($otp->token, $request->phone);
             $apexa->send();
         }
+
         return $this->sendResponse('', 'OTP Sent');
     }
 }
