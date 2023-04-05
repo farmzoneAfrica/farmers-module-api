@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+
+/*Farmer's Onboarding*/
 Route::prefix('farmer')->group(function () {
     Route::post('register', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'index']);
     Route::post('verify-otp', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'verifyOTP'])->middleware(['auth:sanctum', 'onboarding.access']);
@@ -16,9 +18,12 @@ Route::prefix('farmer')->group(function () {
     Route::post('kyc', [\App\Http\Controllers\Auth\FarmerRegisterController::class, 'kyc'])->middleware(['auth:sanctum', 'onboarding.access']);
 });
 
+
+Route::post('forgot-password-phone', \App\Http\Controllers\Auth\ForgotPasswordController::class)->middleware('guest')->name('forgot.password.phone');
+
 Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest')->name('register');
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest')->name('login');
-Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->middleware('guest')->name('password.email');
+Route::post('/forgot-password/email', [PasswordResetLinkController::class, 'store'])->middleware('guest')->name('password.email');
 Route::post('/reset-password', [NewPasswordController::class, 'store'])->middleware('guest')->name('password.store');
 Route::get('/verify-email/{id}/{hash}', VerifyEmailController::class)->middleware(['auth', 'signed', 'throttle:6,1'])->name('verification.verify');
 Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');

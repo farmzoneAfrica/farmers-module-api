@@ -131,6 +131,36 @@ class FarmerRegisterController extends BaseController
         return $services->resendOTP();
     }
 
+    /**
+     * Verify OTP
+     * @OA\Post (
+     *     path="/api/auth/farmer/change-phone",
+     *     tags={"Farmer Register Change Phone Number"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="phone",
+     *                     type="string"
+     *                 ),     *
+     *                 example={"phone": "08123456789"}
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
+     *      @OA\Response(
+     *          response=401,
+     *          description="unauthorized",
+     *          @OA\JsonContent(
+     *              @OA\Property(),
+     *          )
+     *      )
+     * )
+     * @param ChangePhoneNumberRequest $request
+     * @param FarmerRegisterServices $services
+     * @return JsonResponse
+     */
     public function changePhoneNumber(ChangePhoneNumberRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->changePhoneNumber($request);

@@ -14,7 +14,8 @@
         "laravel/tinker": "^2.8",
         "platformcommunity/bunnycdn-storage": "^0.2.0",
         "seshac/otp-generator": "^0.0.7",
-        "tymon/jwt-auth": "^2.0"
+        "tymon/jwt-auth": "^2.0",
+        "ext-curl": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -8,7 +8,9 @@ use App\Http\Requests\ChangePhoneNumberRequest;
 use App\Http\Requests\FarmerRegisterRequest;
 use App\Http\Requests\FarmerRegisterVerifyOTPRequest;
 use App\Http\Requests\FarmerStoreKycRequest;
+use App\Models\FaceBiometric;
 use App\Models\User;
+use BunnyCDN\Storage\BunnyCDNStorage;
 use Illuminate\Http\JsonResponse;
 use Seshac\Otp\Otp;
 
@@ -54,11 +56,42 @@ class FarmerRegisterServices extends BaseController
         $user->phone = $request->phone;
         $user->save();
         FarmerRegistered::dispatch($user);
-        return $this->sendResponse($user, 'Registration successfully', $user->createToken('x-onboarding-token')->plainTextToken);
+        return $this->sendResponse($user, 'Registration successful', $user->createToken('x-onboarding-token')->plainTextToken);
     }
 
     public function updateKyc(FarmerStoreKycRequest $request)
     {
+        $user = User::find(auth()->user()->id);
+        $photo = $request->file('profile_photo');
+        $imageName = time().'_'. $user->id .'.'.$photo->extension();
+        $imagePath = public_path(). '/users/profile';
+        $photo->move($imagePath, $imageName);
+        $imageFullPath = $imagePath. '/'.$imageName;
+        $user->profile_picture = $imageFullPath; //file path will come from bunny-cdn api
+        $user->save();
 
+        $save_biometric_data = FaceBiometric::updateOrCreate(['user_id'=>$user->id],[
+           'user_id'=>$user->id,
+            'bio_data'=>$request->biometric,
+            'is_flagged'=>0
+        ]);
+
+        $save_biometric_data['profile_picture'] = $imageFullPath;
+        return $this->sendResponse($save_biometric_data, 'KYC data updated has been uploaded successfully.');
+    }
+
+    private function uploadToBunny($data)
+    {
+        $client = new \GuzzleHttp\Client();
+
+        $endpoint = "https://storage.bunnycdn.com/novelag/user/";
+        $response = $client->request('PUT', $endpoint, [
+            'headers' => [
+                'AccessKey' => '14c331fd-53ef-4c23-9ecb-1211d6e9adfc9b9d7149-eebb-48a7-8a44-bcb755330d8a',
+                'content-type' => 'application/octet-stream',
+            ],
+        ]);
+
+        echo $response->getBody();
     }
 }

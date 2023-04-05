@@ -20,7 +20,6 @@ class SendFarmerOTP
         $request['template'] = 2007538943;
         $request['refid'] = time().time();
         $request['token'] = $this->apexa_token;
-
-        //$response = Http::post('http://apexa.com.ng/api/v2/otp/send', $request);
+        $response = Http::post('http://apexa.com.ng/api/v2/otp/send', $request);
     }
 }

@@ -79,7 +79,7 @@
                 "tags": [
                     "Farmer Register Verify OTP"
                 ],
-                "summary": "Get List of States",
+                "summary": "Verify OTP",
                 "operationId": "7752d5000d00e535186075e9e2f0b164",
                 "requestBody": {
                     "content": {
@@ -130,6 +130,55 @@
                 ],
                 "summary": "Regenerate OTP",
                 "operationId": "5f180d1a30f668d54bd93f5dd31caafa",
+                "responses": {
+                    "201": {
+                        "description": "Successful created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/farmer/change-phone": {
+            "post": {
+                "tags": [
+                    "Farmer Register Change Phone Number"
+                ],
+                "summary": "Verify OTP",
+                "operationId": "af5af0c2be9292c021348b87a0bbb5c6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "phone": "08123456789"
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Successful created",
