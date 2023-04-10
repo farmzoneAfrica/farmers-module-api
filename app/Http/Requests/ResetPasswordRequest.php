@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class FarmerRegisterVerifyOTPRequest extends FormRequest
+class ResetPasswordRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -17,14 +17,15 @@ class FarmerRegisterVerifyOTPRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'otp'=>'required'
+            'password' => 'required|confirmed',
+            //'otp' => 'required|exists:otps,token'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'otp.required' => 'OTP is required'
+            'password.required'=>'Password is required.'
         ];
     }
 

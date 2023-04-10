@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth\Farmer;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class VerifyForgotPasswordCodeRequest extends FormRequest
+class RegisterVerifyOTPRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -17,19 +17,16 @@ class VerifyForgotPasswordCodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'otp' => 'required|exists:otps,token'
+            'otp'=>'required'
         ];
     }
 
     public function messages(): array
     {
         return [
-            'otp.required'=>'OTP is required.',
-            'otp.exits'=>'Invalid OTP',
+            'otp.required' => 'OTP is required'
         ];
     }
-
-
 
     public function failedValidation(Validator $validator)
     {

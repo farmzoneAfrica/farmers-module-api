@@ -4,19 +4,18 @@ namespace App\Services\Auth;
 
 use App\Events\FarmerRegistered;
 use App\Http\Controllers\BaseController;
-use App\Http\Requests\ChangePhoneNumberRequest;
-use App\Http\Requests\FarmerRegisterRequest;
-use App\Http\Requests\FarmerRegisterVerifyOTPRequest;
-use App\Http\Requests\FarmerStoreKycRequest;
+use App\Http\Requests\Auth\Farmer\ChangePhoneNumberRequest;
+use App\Http\Requests\Auth\Farmer\RegisterVerifyOTPRequest;
+use App\Http\Requests\Auth\Farmer\StoreKycRequest;
+use App\Http\Requests\Auth\Farmer\RegisterRequest;
 use App\Models\FaceBiometric;
 use App\Models\User;
-use BunnyCDN\Storage\BunnyCDNStorage;
 use Illuminate\Http\JsonResponse;
 use Seshac\Otp\Otp;
 
 class FarmerRegisterServices extends BaseController
 {
-    public function register(FarmerRegisterRequest $request): JsonResponse
+    public function register(RegisterRequest $request): JsonResponse
     {
         $user = User::updateOrCreate(['phone' => $request->phone], [
                 'first_name' => $request->first_name,
@@ -34,7 +33,7 @@ class FarmerRegisterServices extends BaseController
         return $this->sendResponse($user, 'Registration successfully', $user->createToken('x-onboarding-token')->plainTextToken);
     }
 
-    public function verifyOTP(FarmerRegisterVerifyOTPRequest $request): JsonResponse
+    public function verifyOTP(RegisterVerifyOTPRequest $request): JsonResponse
     {
         $verify = Otp::setKey('farmer-reg')->validate(auth()->user()->id, $request->otp);
         return ($verify->status)
@@ -59,7 +58,7 @@ class FarmerRegisterServices extends BaseController
         return $this->sendResponse($user, 'Registration successful', $user->createToken('x-onboarding-token')->plainTextToken);
     }
 
-    public function updateKyc(FarmerStoreKycRequest $request)
+    public function updateKyc(StoreKycRequest $request)
     {
         $user = User::find(auth()->user()->id);
         $photo = $request->file('profile_photo');
