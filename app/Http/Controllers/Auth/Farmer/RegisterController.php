@@ -72,7 +72,7 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Verify OTP
+     * Verify Registration OTP
      * @OA\Post (
      *     path="/api/auth/farmer/verify-otp",
      *     tags={"Farmer Register Verify OTP"},

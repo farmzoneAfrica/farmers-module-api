@@ -6,13 +6,57 @@
         "version": "1.0"
     },
     "paths": {
+        "/api/auth/farmer/login": {
+            "post": {
+                "tags": [
+                    "Farmer Login"
+                ],
+                "summary": "Farmer Registration",
+                "operationId": "6b2ebaac082cdfec8611d4d7c409dca6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "phone": "08012345678"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/auth/farmer/register": {
             "post": {
                 "tags": [
                     "Farmer Register"
                 ],
                 "summary": "Farmer Registration",
-                "operationId": "842eded57600dc6274cf7a199427a68a",
+                "operationId": "70d7726e79cb34f6c9c8536dfbc6dd30",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -79,8 +123,8 @@
                 "tags": [
                     "Farmer Register Verify OTP"
                 ],
-                "summary": "Verify OTP",
-                "operationId": "7752d5000d00e535186075e9e2f0b164",
+                "summary": "Verify Registration OTP",
+                "operationId": "b5608d010fb69a432711f695c004f81b",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -129,7 +173,7 @@
                     "Farmer Register Resend OTP"
                 ],
                 "summary": "Regenerate OTP",
-                "operationId": "5f180d1a30f668d54bd93f5dd31caafa",
+                "operationId": "6aa3949b474b2abd33bdbbf1ab6ac986",
                 "responses": {
                     "201": {
                         "description": "Successful created",
@@ -161,7 +205,7 @@
                     "Farmer Register Change Phone Number"
                 ],
                 "summary": "Verify OTP",
-                "operationId": "af5af0c2be9292c021348b87a0bbb5c6",
+                "operationId": "ba9892beaae0ae4b74bc67a528eb920c",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -195,6 +239,50 @@
                                 "schema": {
                                     "properties": {
                                         "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/farmer/verify-login-code": {
+            "post": {
+                "tags": [
+                    "Farmer Verify Login Code"
+                ],
+                "summary": "Farmer Registration",
+                "operationId": "ef610a5241bcd1db1a4aad6a6b0d9c1b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "otp": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "otp": "407353"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
                                     },
                                     "type": "object"
                                 }

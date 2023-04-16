@@ -4,12 +4,44 @@ namespace App\Http\Controllers\Auth\Farmer;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\Auth\Farmer\LoginRequest;
+use App\Http\Requests\Auth\Farmer\RegisterRequest;
 use App\Models\User;
 use App\Services\ApexaService;
+use App\Services\Auth\FarmerRegisterServices;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Http\JsonResponse;
 use Seshac\Otp\Otp;
 
 class LoginController extends BaseController
 {
+    /**
+     * Farmer Registration
+     * @OA\Post (
+     *     path="/api/auth/farmer/login",
+     *     tags={"Farmer Login"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="phone",
+     *                     type="string"
+     *                 ),
+     *                 example={"phone": "08012345678"}
+     *             )
+     *         )
+     *     ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="invalid",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="success", type="boolean", example="false"),
+     *          )
+     *      )
+     * )
+     * @param LoginRequest $request
+     * @return JsonResponse
+     */
     public function __invoke(LoginRequest $request)
     {
         $user = User::where('phone', $request->phone)->first();
