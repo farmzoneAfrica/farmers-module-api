@@ -11,10 +11,11 @@ use Seshac\Otp\Otp;
 class VerifyLoginCodeController extends BaseController
 {
     /**
-     * Farmer Registration
+     * Verify Farmer Login OTP
      * @OA\Post (
      *     path="/api/auth/farmer/verify-login-code",
      *     tags={"Farmer Verify Login Code"},
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",

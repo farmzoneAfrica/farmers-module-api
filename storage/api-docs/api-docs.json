@@ -246,9 +246,69 @@
                         }
                     }
                 },
-                "security": {
-                    "bearer_token": {}
-                }
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/farmer/kyc": {
+            "post": {
+                "tags": [
+                    "Farmer Register Update KYC"
+                ],
+                "summary": "Update KYC",
+                "operationId": "1e7d7b0bdc5fbb0f6c6b419f4a73a213",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "profile_photo": {
+                                        "type": "file"
+                                    },
+                                    "biometric": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "profile_photo": "",
+                                    "biometric": "base64 data"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/api/auth/farmer/verify-login-code": {
@@ -292,7 +352,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/api/states": {

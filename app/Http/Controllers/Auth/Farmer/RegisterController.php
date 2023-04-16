@@ -135,7 +135,7 @@ class RegisterController extends BaseController
      * @OA\Post (
      *     path="/api/auth/farmer/change-phone",
      *     tags={"Farmer Register Change Phone Number"},
-     *     security={"bearer_token": {}},
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -166,6 +166,41 @@ class RegisterController extends BaseController
         return $services->changePhoneNumber($request);
     }
 
+    /**
+     * Update KYC
+     * @OA\Post (
+     *     path="/api/auth/farmer/kyc",
+     *     tags={"Farmer Register Update KYC"},
+     *     security={{"sanctum":{}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="profile_photo",
+     *                     type="file"
+     *                 ),
+     *                  @OA\Property(
+     *                     property="biometric",
+     *                     type="string"
+     *                 ),
+     *                 example={"profile_photo": "", "biometric": "base64 data"}
+     *             ),
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
+     *      @OA\Response(
+     *          response=401,
+     *          description="unauthorized",
+     *          @OA\JsonContent(
+     *              @OA\Property(),
+     *          )
+     *      )
+     * )
+     * @param StoreKycRequest $request
+     * @param FarmerRegisterServices $services
+     * @return JsonResponse
+     */
     public function kyc(StoreKycRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->updateKyc($request);

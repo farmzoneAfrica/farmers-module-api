@@ -55,7 +55,8 @@ class FarmerRegisterServices extends BaseController
         $user->phone = $request->phone;
         $user->save();
         FarmerRegistered::dispatch($user);
-        return $this->sendResponse($user, 'Registration successful', $user->createToken('x-onboarding-token')->plainTextToken);
+        $user->tokens()->delete();
+        return $this->sendResponse($user, 'Phone number changed successfully', $user->createToken('x-onboarding-token')->plainTextToken);
     }
 
     public function updateKyc(StoreKycRequest $request)
