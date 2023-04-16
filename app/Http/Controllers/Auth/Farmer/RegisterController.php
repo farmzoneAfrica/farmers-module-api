@@ -131,10 +131,11 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Verify OTP
+     * Change Phone Number
      * @OA\Post (
      *     path="/api/auth/farmer/change-phone",
      *     tags={"Farmer Register Change Phone Number"},
+     *     security={"bearer_token": {}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",

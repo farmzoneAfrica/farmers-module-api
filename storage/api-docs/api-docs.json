@@ -204,7 +204,7 @@
                 "tags": [
                     "Farmer Register Change Phone Number"
                 ],
-                "summary": "Verify OTP",
+                "summary": "Change Phone Number",
                 "operationId": "ba9892beaae0ae4b74bc67a528eb920c",
                 "requestBody": {
                     "content": {
@@ -245,6 +245,9 @@
                             }
                         }
                     }
+                },
+                "security": {
+                    "bearer_token": {}
                 }
             }
         },
