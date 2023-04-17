@@ -76,6 +76,7 @@ class RegisterController extends BaseController
      * @OA\Post (
      *     path="/api/auth/farmer/verify-otp",
      *     tags={"Farmer Register Verify OTP"},
+     *     security={{"sanctum":{}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
