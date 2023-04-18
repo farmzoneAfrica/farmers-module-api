@@ -164,16 +164,21 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
-        "/api/auth/farmer/register/resend-otp": {
+        "/api/auth/farmer/resend-otp": {
             "get": {
                 "tags": [
                     "Farmer Register Resend OTP"
                 ],
                 "summary": "Regenerate OTP",
-                "operationId": "6aa3949b474b2abd33bdbbf1ab6ac986",
+                "operationId": "66c79d7c42f2afe163d7638960f6dc11",
                 "responses": {
                     "201": {
                         "description": "Successful created",
@@ -196,7 +201,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/api/auth/farmer/change-phone": {
@@ -316,7 +326,7 @@
                 "tags": [
                     "Farmer Verify Login Code"
                 ],
-                "summary": "Farmer Registration",
+                "summary": "Verify Farmer Login OTP",
                 "operationId": "ef610a5241bcd1db1a4aad6a6b0d9c1b",
                 "requestBody": {
                     "content": {

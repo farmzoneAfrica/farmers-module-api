@@ -111,8 +111,9 @@ class RegisterController extends BaseController
     /**
      * Regenerate OTP
      * @OA\Get (
-     *     path="/api/auth/farmer/register/resend-otp",
+     *     path="/api/auth/farmer/resend-otp",
      *     tags={"Farmer Register Resend OTP"},
+     *     security={{"sanctum":{}}},
      *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
      *      @OA\Response(
      *          response=401,
