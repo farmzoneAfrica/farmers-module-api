@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sent_otps', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('otp');
             $table->string('phone');
             $table->enum('status', ['pending', 'sent', 'delivered', 'failed'])->default('pending');
