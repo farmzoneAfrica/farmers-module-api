@@ -10,7 +10,7 @@ return [
     | By default = 10 minutes
     |
     */
-    'validity' => env('OTP_VALIDITY_TIME', 10),
+    'validity' => env('OTP_VALIDITY_TIME', 10000),
     /*
     |--------------------------------------------------------------------------
     |  Length of the generated OTP
@@ -39,7 +39,7 @@ return [
     | This filed will be used when validating the generated OTP token.
     |
     */
-    'allowedAttempts' => env('OTP_ALLOWED_ATTEMPTS', 1),
+    'allowedAttempts' => env('OTP_ALLOWED_ATTEMPTS', 5),
 
 
     /*
