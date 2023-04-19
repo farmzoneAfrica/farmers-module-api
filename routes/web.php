@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('migrate', function () {
+    Artisan::command('migrate');
+});
+
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });

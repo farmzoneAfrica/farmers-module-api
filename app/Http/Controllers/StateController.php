@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class StateController extends BaseController
 {
-
     /**
      * Get List of States
      * @OA\Get (
