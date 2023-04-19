@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "ext-curl": "*",
         "bavix/laravel-wallet": "^9.6",
         "darkaonline/l5-swagger": "^8.5",
         "guzzlehttp/guzzle": "^7.2",
@@ -14,8 +15,8 @@
         "laravel/tinker": "^2.8",
         "platformcommunity/bunnycdn-storage": "^0.2.0",
         "seshac/otp-generator": "^0.0.7",
-        "tymon/jwt-auth": "^2.0",
-        "ext-curl": "*"
+        "spatie/laravel-activitylog": "^4.7",
+        "tymon/jwt-auth": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
