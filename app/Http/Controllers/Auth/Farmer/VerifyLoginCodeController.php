@@ -14,8 +14,9 @@ class VerifyLoginCodeController extends BaseController
      * Verify Farmer Login OTP
      * @OA\Post (
      *     path="/api/auth/farmer/verify-login-code",
-     *     tags={"Farmer Verify Login Code"},
+     *     tags={"Farmer Auth"},
      *     security={{"sanctum":{}}},
+     *     operationId="farmerVerifyLoginOtp",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
