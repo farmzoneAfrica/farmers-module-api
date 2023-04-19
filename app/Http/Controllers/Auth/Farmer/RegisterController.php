@@ -176,7 +176,7 @@ class RegisterController extends BaseController
      * Update KYC
      * @OA\Post (
      *     path="/api/auth/farmer/kyc",
-     *     tags={"Farmer Onbaording"},
+     *     tags={"Farmer Onboarding"},
      *     security={{"sanctum":{}}},
      *     operationId="farmerRegistrationKYC",
      *     @OA\RequestBody(

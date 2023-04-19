@@ -266,7 +266,7 @@
         "/api/auth/farmer/kyc": {
             "post": {
                 "tags": [
-                    "Farmer Onbaording"
+                    "Farmer Onboarding"
                 ],
                 "summary": "Update KYC",
                 "operationId": "farmerRegistrationKYC",
