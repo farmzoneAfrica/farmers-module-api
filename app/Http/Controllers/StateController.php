@@ -15,6 +15,7 @@ class StateController extends BaseController
      * @OA\Get (
      *     path="/api/states",
      *     tags={"States"},
+     *     operationId="statesList",
      *     @OA\Parameter(
      *         name="sort_field",
      *         in="query",
@@ -69,7 +70,8 @@ class StateController extends BaseController
      * Get List of Local Governments in a State
      * @OA\Get (
      *     path="/api/local-governments/{state_id}",
-     *     tags={"Local Governments"},
+     *     tags={"States"},
+     *     operationId="statesLGList",
      *     @OA\Parameter(
      *         description="Parameter with mutliple examples",
      *         in="path",
@@ -129,7 +131,8 @@ class StateController extends BaseController
      * Get List of Wards in a Local Government
      * @OA\Get (
      *     path="/api/wards/{local_government_id}",
-     *     tags={"Wards"},
+     *     tags={"States"},
+     *     operationId="lgWardsList",
      *     @OA\Parameter(
      *         description="Parameter with mutliple examples",
      *         in="path",

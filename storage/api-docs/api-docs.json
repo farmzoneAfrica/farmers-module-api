@@ -376,7 +376,7 @@
                     "States"
                 ],
                 "summary": "Get List of States",
-                "operationId": "4136acf478452d9e777d0a2ef5ef82ef",
+                "operationId": "statesList",
                 "parameters": [
                     {
                         "name": "sort_field",
@@ -446,10 +446,10 @@
         "/api/local-governments/{state_id}": {
             "get": {
                 "tags": [
-                    "Local Governments"
+                    "States"
                 ],
                 "summary": "Get List of Local Governments in a State",
-                "operationId": "63423ba4b0b19c06181c50a1a0d3ebac",
+                "operationId": "statesLGList",
                 "parameters": [
                     {
                         "name": "state_id",
@@ -525,10 +525,10 @@
         "/api/wards/{local_government_id}": {
             "get": {
                 "tags": [
-                    "Wards"
+                    "States"
                 ],
                 "summary": "Get List of Wards in a Local Government",
-                "operationId": "6a538dfe1f3bd00fbd7d7fa264aed2ad",
+                "operationId": "lgWardsList",
                 "parameters": [
                     {
                         "name": "local_government_id",
