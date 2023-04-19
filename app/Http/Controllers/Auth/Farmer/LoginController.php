@@ -15,11 +15,11 @@ use Seshac\Otp\Otp;
 class LoginController extends BaseController
 {
     /**
-     * Farmer Registration
+     * Farmer Initiate Login
      * @OA\Post (
      *     path="/api/auth/farmer/login",
      *     operationId="farmerLogin",
-     *     tags={"Farmer"},
+     *     tags={"Farmer Auth"},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",

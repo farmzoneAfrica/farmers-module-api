@@ -16,7 +16,8 @@ class RegisterController extends BaseController
      * Farmer Registration
      * @OA\Post (
      *     path="/api/auth/farmer/register",
-     *     tags={"Farmer Register"},
+     *     tags={"Farmer Onboarding"},
+     *     operationId="farmerRegistration",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -75,8 +76,9 @@ class RegisterController extends BaseController
      * Verify Registration OTP
      * @OA\Post (
      *     path="/api/auth/farmer/verify-otp",
-     *     tags={"Farmer Register Verify OTP"},
+     *     tags={"Farmer Onboarding"},
      *     security={{"sanctum":{}}},
+     *     operationId="farmerVerifyRegisterOtp",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -112,8 +114,9 @@ class RegisterController extends BaseController
      * Regenerate OTP
      * @OA\Get (
      *     path="/api/auth/farmer/resend-otp",
-     *     tags={"Farmer Register Resend OTP"},
+     *     tags={"Farmer Onboarding"},
      *     security={{"sanctum":{}}},
+     *     operationId="farmerRegistrationResendOtp",
      *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
      *      @OA\Response(
      *          response=401,
@@ -136,8 +139,9 @@ class RegisterController extends BaseController
      * Change Phone Number
      * @OA\Post (
      *     path="/api/auth/farmer/change-phone",
-     *     tags={"Farmer Register Change Phone Number"},
+     *     tags={"Farmer Onboarding"},
      *     security={{"sanctum":{}}},
+     *     operationId="farmerRegistrationChangePhoneNumber",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -172,8 +176,9 @@ class RegisterController extends BaseController
      * Update KYC
      * @OA\Post (
      *     path="/api/auth/farmer/kyc",
-     *     tags={"Farmer Register Update KYC"},
+     *     tags={"Farmer Onbaording"},
      *     security={{"sanctum":{}}},
+     *     operationId="farmerRegistrationKYC",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",

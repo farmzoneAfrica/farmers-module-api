@@ -9,9 +9,9 @@
         "/api/auth/farmer/login": {
             "post": {
                 "tags": [
-                    "Farmer"
+                    "Farmer Auth"
                 ],
-                "summary": "Farmer Registration",
+                "summary": "Farmer Initiate Login",
                 "operationId": "farmerLogin",
                 "requestBody": {
                     "content": {
@@ -53,10 +53,10 @@
         "/api/auth/farmer/register": {
             "post": {
                 "tags": [
-                    "Farmer Register"
+                    "Farmer Onboarding"
                 ],
                 "summary": "Farmer Registration",
-                "operationId": "70d7726e79cb34f6c9c8536dfbc6dd30",
+                "operationId": "farmerRegistration",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -121,10 +121,10 @@
         "/api/auth/farmer/verify-otp": {
             "post": {
                 "tags": [
-                    "Farmer Register Verify OTP"
+                    "Farmer Onboarding"
                 ],
                 "summary": "Verify Registration OTP",
-                "operationId": "b5608d010fb69a432711f695c004f81b",
+                "operationId": "farmerVerifyRegisterOtp",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -175,10 +175,10 @@
         "/api/auth/farmer/resend-otp": {
             "get": {
                 "tags": [
-                    "Farmer Register Resend OTP"
+                    "Farmer Onboarding"
                 ],
                 "summary": "Regenerate OTP",
-                "operationId": "66c79d7c42f2afe163d7638960f6dc11",
+                "operationId": "farmerRegistrationResendOtp",
                 "responses": {
                     "201": {
                         "description": "Successful created",
@@ -212,10 +212,10 @@
         "/api/auth/farmer/change-phone": {
             "post": {
                 "tags": [
-                    "Farmer Register Change Phone Number"
+                    "Farmer Onboarding"
                 ],
                 "summary": "Change Phone Number",
-                "operationId": "ba9892beaae0ae4b74bc67a528eb920c",
+                "operationId": "farmerRegistrationChangePhoneNumber",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -266,10 +266,10 @@
         "/api/auth/farmer/kyc": {
             "post": {
                 "tags": [
-                    "Farmer Register Update KYC"
+                    "Farmer Onbaording"
                 ],
                 "summary": "Update KYC",
-                "operationId": "1e7d7b0bdc5fbb0f6c6b419f4a73a213",
+                "operationId": "farmerRegistrationKYC",
                 "requestBody": {
                     "content": {
                         "multipart/form-data": {
@@ -324,10 +324,10 @@
         "/api/auth/farmer/verify-login-code": {
             "post": {
                 "tags": [
-                    "Farmer Verify Login Code"
+                    "Farmer Auth"
                 ],
                 "summary": "Verify Farmer Login OTP",
-                "operationId": "ef610a5241bcd1db1a4aad6a6b0d9c1b",
+                "operationId": "farmerVerifyLoginOtp",
                 "requestBody": {
                     "content": {
                         "application/json": {
