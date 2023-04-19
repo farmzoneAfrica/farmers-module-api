@@ -18,7 +18,8 @@ class LoginController extends BaseController
      * Farmer Registration
      * @OA\Post (
      *     path="/api/auth/farmer/login",
-     *     tags={"Farmer Login Endpoint"},
+     *     operationId="farmerLogin",
+     *     tags={"Farmer"},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",

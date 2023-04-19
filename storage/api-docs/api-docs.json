@@ -9,10 +9,10 @@
         "/api/auth/farmer/login": {
             "post": {
                 "tags": [
-                    "Farmer Login Endpoint"
+                    "Farmer"
                 ],
                 "summary": "Farmer Registration",
-                "operationId": "6b2ebaac082cdfec8611d4d7c409dca6",
+                "operationId": "farmerLogin",
                 "requestBody": {
                     "content": {
                         "application/json": {
