@@ -8,9 +8,11 @@ use App\Http\Requests\Auth\Farmer\ChangePhoneNumberRequest;
 use App\Http\Requests\Auth\Farmer\RegisterVerifyOTPRequest;
 use App\Http\Requests\Auth\Farmer\StoreKycRequest;
 use App\Http\Requests\Auth\Farmer\RegisterRequest;
+use App\Http\Requests\EnrollFaceIdRequest;
 use App\Models\FaceBiometric;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Crypt;
 use Seshac\Otp\Otp;
 
 class FarmerRegisterServices extends BaseController
@@ -22,10 +24,11 @@ class FarmerRegisterServices extends BaseController
                 'last_name' => $request->last_name,
                 'phone' => $request->phone,
                 'email' => $request->email,
+                'code' => \Str::random(30),
                 'state_id' => $request->state_id,
                 'local_government_id' => $request->local_government_id,
                 'ward_id' => $request->ward_id,
-                'user_type_id'=>3
+                'user_type_id'=>3,
             ]
         );
 
@@ -57,6 +60,20 @@ class FarmerRegisterServices extends BaseController
         FarmerRegistered::dispatch($user);
         $user->tokens()->delete();
         return $this->sendResponse($user, 'Phone number changed successfully', $user->createToken('x-onboarding-token')->plainTextToken);
+    }
+
+    public function enrollFaceId(EnrollFaceIdRequest $request): JsonResponse
+    {
+        $data = $request->validated();
+        $data['user_id'] = auth()->user()->id;
+        $data['is_flagged'] = 0;
+        $face_data = FaceBiometric::create($data);
+        $response = [
+            'user'=>User::find(auth()->user()->id),
+            'face'=>$face_data
+        ];
+
+        return $this->sendResponse($response, 'Face ID enrolled successfully');
     }
 
     public function updateKyc(StoreKycRequest $request)

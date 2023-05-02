@@ -15,6 +15,7 @@ Route::prefix('farmer')->group(function () {
     Route::get('resend-otp', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'resendOTP'])->middleware(['auth:sanctum', 'onboarding.access']);
     Route::post('change-phone', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'changePhoneNumber'])->middleware(['auth:sanctum', 'onboarding.access']);
     Route::post('kyc', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'kyc'])->middleware(['auth:sanctum', 'onboarding.access']);
+    Route::post('enroll-face-id', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'enrollFaceId'])->middleware(['auth:sanctum', 'onboarding.access']);
     Route::post('login', \App\Http\Controllers\Auth\Farmer\LoginController::class)->middleware('guest')->name('login');
     Route::get('login', function () {
         return response()->json(['message'=>'Unauthenticated']);

@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class FaceBiometric extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'user_id',
-        'bio_data',
-        'is_flagged'
+        "user_id",
+        "user_code",
+        "facial_id",
+        "date_enrolled",
+        "age",
+        "gender",
+        "bio_data",
+        "provider"
     ];
 }

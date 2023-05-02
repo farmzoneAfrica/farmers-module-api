@@ -1,24 +1,34 @@
 <?php
 
-namespace App\Http\Requests\Auth\Farmer;
+namespace App\Http\Requests;
 
+use App\Models\FaceBiometric;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class StoreKycRequest extends FormRequest
+class EnrollFaceIdRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     */
     public function authorize(): bool
     {
         return true;
     }
 
+
     public function rules(): array
     {
         return [
-            'facial_id' => 'required',
-            'biometric' => 'required'
+            'user_code' => 'required|unique:'.FaceBiometric::class,
+            'provider' => 'required',
+            'facial_id' => 'required|unique:'.FaceBiometric::class,
+            'date_enrolled' => 'required',
+            'gender' => 'required',
+            'age' => 'required',
+            'bio_data' => 'required',
         ];
     }
 

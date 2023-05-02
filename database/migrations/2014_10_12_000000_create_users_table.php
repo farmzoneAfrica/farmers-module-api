@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email')->nullable();
             $table->string('password')->nullable();
+            $table->string('code')->nullable();
             $table->string('profile_picture')->nullable();
             $table->foreignId('state_id')->nullable();
             $table->foreignId('local_government_id')->nullable();

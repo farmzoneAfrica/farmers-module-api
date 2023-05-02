@@ -11,6 +11,11 @@ return new class extends Migration
         Schema::create('face_biometrics', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->string('provider');
+            $table->string('facial_id');
+            $table->string('date_enrolled');
+            $table->string('gender')->nullable();
+            $table->string('age')->nullable();
             $table->text('bio_data');
             $table->boolean('is_flagged')->default(0);
             $table->timestamps();

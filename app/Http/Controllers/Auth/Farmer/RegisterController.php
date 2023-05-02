@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\Farmer\ChangePhoneNumberRequest;
 use App\Http\Requests\Auth\Farmer\RegisterVerifyOTPRequest;
 use App\Http\Requests\Auth\Farmer\StoreKycRequest;
 use App\Http\Requests\Auth\Farmer\RegisterRequest;
+use App\Http\Requests\EnrollFaceIdRequest;
 use App\Services\Auth\FarmerRegisterServices;
 use Illuminate\Http\JsonResponse;
 
@@ -170,6 +171,47 @@ class RegisterController extends BaseController
     public function changePhoneNumber(ChangePhoneNumberRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->changePhoneNumber($request);
+    }
+
+    /**
+     * Update KYC
+     * @OA\Post (
+     *     path="/api/auth/farmer/kyc",
+     *     tags={"Farmer Onboarding"},
+     *     security={{"sanctum":{}}},
+     *     operationId="farmerRegistrationKYC",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="profile_photo",
+     *                     type="file"
+     *                 ),
+     *                  @OA\Property(
+     *                     property="biometric",
+     *                     type="string"
+     *                 ),
+     *                 example={"profile_photo": "", "biometric": "base64 data"}
+     *             ),
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
+     *      @OA\Response(
+     *          response=401,
+     *          description="unauthorized",
+     *          @OA\JsonContent(
+     *              @OA\Property(),
+     *          )
+     *      )
+     * )
+     * @param StoreKycRequest $request
+     * @param FarmerRegisterServices $services
+     * @return JsonResponse
+     */
+    public function enrollFaceId(EnrollFaceIdRequest $request, FarmerRegisterServices $services): JsonResponse
+    {
+        return $services->enrollFaceId($request);
     }
 
     /**
