@@ -19,7 +19,8 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://fe.novel-ag.com','http://localhost:3002'],
+    //'allowed_origins' => ['https://fe.novel-ag.com','http://localhost:3002'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
