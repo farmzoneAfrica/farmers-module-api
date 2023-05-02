@@ -29,7 +29,7 @@ class StateService extends BaseController
 
     public function states(Request $request,)
     {
-        $states = State::where('id', 1)->where(function ($query) use ($request) {
+        $states = State::where(function ($query) use ($request) {
             return $query->when($request->filled('search'), function ($query) use ($request) {
                 return $query->where('name', 'LIKE', "%{$request->search}%");
             });
