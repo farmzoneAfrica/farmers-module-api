@@ -42,6 +42,7 @@ class FaceLoginController extends BaseController
     public function __invoke(FaceIdLoginRequest $request)
     {
         $check = FaceBiometric::where([
-            'user_code' => $request->code, 'facial_id'=>$request->facial_id])->first();
+            'user_code' => $request->code,
+            'facial_id'=>$request->facial_id])->first();
     }
 }
