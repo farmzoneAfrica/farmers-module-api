@@ -18,9 +18,12 @@ Route::prefix('farmer')->group(function () {
     Route::post('enroll-face-id', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'enrollFaceId'])->middleware(['auth:sanctum', 'onboarding.access']);
 
     Route::post('login', \App\Http\Controllers\Auth\Farmer\LoginController::class)->middleware('guest')->name('login');
+    Route::post('login/face-id', \App\Http\Controllers\Auth\Farmer\FaceLoginController::class)->middleware('guest')->name('login.face.id');
+
     Route::get('login', function () {
         return response()->json(['message'=>'Unauthenticated']);
     })->middleware('guest')->name('login.get');
+
     Route::post('verify-login-code', \App\Http\Controllers\Auth\Farmer\VerifyLoginCodeController::class)->middleware(['auth:sanctum']);
 
 });
