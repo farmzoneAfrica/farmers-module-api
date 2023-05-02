@@ -11,22 +11,27 @@ use Illuminate\Http\JsonResponse;
 class FaceLoginController extends BaseController
 {
     /**
-     * Farmer Initiate Login
+     * Farmer Face ID Login
      * @OA\Post (
-     *     path="/api/auth/farmer/login/face",
-     *     operationId="farmerLogin",
+     *     path="/api/auth/farmer/login/face-id",
+     *     operationId="farmerFaceIdLogin",
      *     tags={"Farmer Auth"},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="phone",
+     *                     property="user_code",
      *                     type="string"
      *                 ),
-     *                 example={"phone": "08012345678"}
+     *                  @OA\Property(
+     *                     property="facial_id",
+     *                     type="string"
+     *                 ),
+     *                 example={"user_code": "6N9CzNQdtylNTxFKXf5mbWDHE61UTq", "facial_id":"facial_id from faceio"}
      *             )
-     *         )
+     *         ),
+         *
      *     ),
      *      @OA\Response(
      *          response=400,

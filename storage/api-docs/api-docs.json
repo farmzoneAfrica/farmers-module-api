@@ -6,6 +6,54 @@
         "version": "1.0"
     },
     "paths": {
+        "/api/auth/farmer/login/face-id": {
+            "post": {
+                "tags": [
+                    "Farmer Auth"
+                ],
+                "summary": "Farmer Face ID Login",
+                "operationId": "farmerFaceIdLogin",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_code": {
+                                        "type": "string"
+                                    },
+                                    "facial_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "user_code": "6N9CzNQdtylNTxFKXf5mbWDHE61UTq",
+                                    "facial_id": "facial_id from faceio"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/auth/farmer/login": {
             "post": {
                 "tags": [
@@ -228,6 +276,85 @@
                                 "type": "object",
                                 "example": {
                                     "phone": "08123456789"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/farmer/enroll-face-id": {
+            "post": {
+                "tags": [
+                    "Farmer Onboarding"
+                ],
+                "summary": "Enroll Face ID",
+                "operationId": "farmerEnrollFaceId",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_code": {
+                                        "type": "string"
+                                    },
+                                    "facial_id": {
+                                        "type": "string"
+                                    },
+                                    "date_enrolled": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "age": {
+                                        "type": "string"
+                                    },
+                                    "gender": {
+                                        "type": "string"
+                                    },
+                                    "bio_data": {
+                                        "type": "string"
+                                    },
+                                    "provider": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "user_code": "6N9CzNQdtylNTxFKXf5mbWDHE61UTq",
+                                    "facial_id": "facial_id from faceio",
+                                    "date_enrolled": "",
+                                    "age": "56",
+                                    "gender": "male",
+                                    "bio_data": "json data from provider (faceio)",
+                                    "provider": "faceio"
                                 }
                             }
                         }

@@ -174,25 +174,53 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Update KYC
+     * Enroll Face ID
      * @OA\Post (
-     *     path="/api/auth/farmer/kyc",
+     *     path="/api/auth/farmer/enroll-face-id",
      *     tags={"Farmer Onboarding"},
      *     security={{"sanctum":{}}},
-     *     operationId="farmerRegistrationKYC",
+     *     operationId="farmerEnrollFaceId",
      *     @OA\RequestBody(
      *         @OA\MediaType(
-     *             mediaType="multipart/form-data",
+     *             mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="profile_photo",
-     *                     type="file"
-     *                 ),
-     *                  @OA\Property(
-     *                     property="biometric",
+     *                     property="user_code",
      *                     type="string"
      *                 ),
-     *                 example={"profile_photo": "", "biometric": "base64 data"}
+     *                  @OA\Property(
+     *                     property="facial_id",
+     *                     type="string"
+     *                 ),
+     *                  @OA\Property(
+     *                     property="date_enrolled",
+     *                     type="datetime"
+     *                 ),
+     *                  @OA\Property(
+     *                     property="age",
+     *                     type="string"
+     *                 ),
+     *                  @OA\Property(
+     *                     property="gender",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="bio_data",
+     *                     type="string"
+     *                 ),
+ *                      @OA\Property(
+     *                     property="provider",
+     *                     type="string"
+     *                 ),
+     *
+     *                 example={"user_code": "6N9CzNQdtylNTxFKXf5mbWDHE61UTq",
+     *                              "facial_id": "facial_id from faceio",
+     *                              "date_enrolled": "",
+     *                              "age": "56",
+     *                              "gender": "male",
+     *                              "bio_data": "json data from provider (faceio)",
+     *                              "provider": "faceio",
+     *                  }
      *             ),
      *         )
      *     ),
@@ -205,7 +233,6 @@ class RegisterController extends BaseController
      *          )
      *      )
      * )
-     * @param StoreKycRequest $request
      * @param FarmerRegisterServices $services
      * @return JsonResponse
      */
