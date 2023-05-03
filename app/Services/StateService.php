@@ -4,30 +4,14 @@
 namespace App\Services;
 
 
-use App\Http\Controllers\BaseController;
 use App\Models\LocalGovernment;
 use App\Models\State;
 use App\Models\Ward;
 use Illuminate\Http\Request;
 
-class StateService extends BaseController
+class StateService extends BaseService
 {
-    public string $perPage;
-    public string $pageStart;
-    public string $offSet;
-    public string $order;
-    public string $dir;
-
-    public function __construct()
-    {
-        $this->perPage = \request()->limit ?? '-1';
-        $this->pageStart = \Request::get('page', 1);
-        $this->offSet = ($this->pageStart * $this->perPage) - $this->perPage;
-        $this->order = $request->sort_field ?? 'id';
-        $this->dir = $request->sort_type ?? 'asc';
-    }
-
-    public function states(Request $request,)
+    public function states(Request $request)
     {
         $states = State::where(function ($query) use ($request) {
             return $query->when($request->filled('search'), function ($query) use ($request) {

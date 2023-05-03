@@ -2,29 +2,31 @@
 
 namespace App\Services;
 
-use App\Models\FarmSizeUnit;
+use App\Models\Crop;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class FarmSizeUnitService extends BaseService
+class CropsService extends BaseService
 {
-    public function farmSizeUnitList(Request $request): \Illuminate\Http\JsonResponse
+    public function cropsList(Request $request): JsonResponse
     {
-        $farm_size_units = FarmSizeUnit::where(function ($query) use ($request) {
+        $crops = Crop::where(function ($query) use ($request) {
             return $query->when($request->filled('search'), function ($query) use ($request) {
+                $query->where('status', '=', $request->status);
                 return $query->where('name', 'LIKE', "%{$request->search}%");
             });
         });
 
-        $totalRows = $farm_size_units->count();
+        $totalRows = $crops->count();
         if($this->perPage == "-1") $this->perPage = $totalRows;
 
-        $farm_size_units = $farm_size_units->offset($this->offSet)
+        $crops_list = $crops->offset($this->offSet)
             ->limit($this->perPage)
             ->orderBy($this->order, $this->dir)
             ->get();
 
         return $this->sendResponse([
-            'farm_size_units'=>$farm_size_units,
+            'farm_size_units'=>$crops_list,
             'totalRows' => $totalRows,
         ]);
     }
