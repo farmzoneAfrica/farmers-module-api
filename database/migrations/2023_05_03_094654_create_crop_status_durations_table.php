@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('farm_crops', function (Blueprint $table) {
+        Schema::create('crop_status_durations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('farm_id');
-            $table->foreignId('crop_id');
-            $table->foreignId('crop_status_id');
-            $table->date('last_changed');
+            $table->foreignIdFor(\App\Models\FarmCrop::class);
+            $table->integer('duration')->nullable()->comment('in days');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('farm_crops');
+        Schema::dropIfExists('crop_status_durations');
     }
 };

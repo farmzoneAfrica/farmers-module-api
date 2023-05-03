@@ -18,7 +18,6 @@ return [
     'paths' => ['api/*'],
 
     'allowed_methods' => ['*'],
-
     //'allowed_origins' => ['https://fe.novel-ag.com','http://localhost:3002'],
     'allowed_origins' => ['*'],
 

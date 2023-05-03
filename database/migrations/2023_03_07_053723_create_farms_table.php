@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('farms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignIdFor(\App\Models\User::class,'user_id');
             $table->string('latitude');
             $table->string('longitude');
-            $table->foreignId('state_id');
-            $table->foreignId('local_government_id');
-            $table->foreignId('ward_id');
+            $table->foreignIdFor(\App\Models\State::class,'state_id');
+            $table->foreignIdFor(\App\Models\LocalGovernment::class, 'local_government_id');
+            $table->foreignIdFor(\App\Models\Ward::class, 'ward_id');
             $table->string('address', 255)->nullable();
             $table->string('landmark', 255)->nullable();
             $table->integer('size');
-            $table->string('unit');
-            $table->enum('status', ['irrigation']);
+            $table->foreignIdFor(\App\Models\FarmSizeUnit::class);
+            $table->enum('status', ['active', 'inactive']);
             $table->timestamps();
         });
     }

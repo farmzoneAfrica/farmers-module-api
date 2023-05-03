@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('farm_crops', function (Blueprint $table) {
+        Schema::create('farm_size_units', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('farm_id');
-            $table->foreignId('crop_id');
-            $table->foreignId('crop_status_id');
-            $table->date('last_changed');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('farm_crops');
+        Schema::dropIfExists('farm_size_units');
     }
 };

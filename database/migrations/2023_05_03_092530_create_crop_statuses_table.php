@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('farm_crops', function (Blueprint $table) {
+        Schema::create('crop_statuses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('farm_id');
-            $table->foreignId('crop_id');
-            $table->foreignId('crop_status_id');
-            $table->date('last_changed');
+            $table->string('name');
+            $table->integer('order');
+            $table->boolean('is_final')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('farm_crops');
+        Schema::dropIfExists('crop_statuses');
     }
 };

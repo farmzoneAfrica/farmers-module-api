@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('states', [\App\Http\Controllers\StateController::class, 'index']);
 Route::get('local-governments/{state_id}', [\App\Http\Controllers\StateController::class, 'lgas']);
 Route::get('wards/{local_government_id}', [\App\Http\Controllers\StateController::class, 'wards']);
+Route::get('farm-size-units', [\App\Http\Controllers\Farmers\FarmSizeUnitController::class, 'index']);
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {

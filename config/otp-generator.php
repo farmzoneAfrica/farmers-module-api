@@ -26,7 +26,7 @@ return [
     |  Length of the generated OTP
     |--------------------------------------------------------------------------
     |
-    | By default = 6 digits used
+    | By default = this is set to default
     |
     */
     'key' => env('OTP_KEY', 'default'),
@@ -36,7 +36,7 @@ return [
     | Allowed attempts within duration of attempts_count_time
     |--------------------------------------------------------------------------
     |
-    | This filed will be used when validating the generated OTP token.
+    | This field will be used when validating the generated OTP token.
     |
     */
     'allowedAttempts' => env('OTP_ALLOWED_ATTEMPTS', 5),
@@ -57,7 +57,7 @@ return [
     | Use same token to resend the OTP
     |-------------------------------------------------------------------------
     |
-    | if true the the second time onwards generated OTPs same a the first one (Only OTP validation time)
+    | if true the the second time onwards generated OTPs same the first one (Only OTP validation time)
     | if false each time unique OPT will be generated
     */
     'useSameToken' => false,
@@ -79,5 +79,5 @@ return [
     | Once the limit reached, the end-user can't able to generate OPT until the OTP deleteOldOtps time is over.
     |
     */
-    'maximumOtpsAllowed' => env('MAXIMUM_OTPS_ALLOWED', 10),
+    'maximumOtpsAllowed' => env('MAXIMUM_OTPS_ALLOWED', 5),
 ];
