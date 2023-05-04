@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Farmers;
 
 use App\Http\Controllers\Controller;
-use App\Services\FarmSizeUnitService;
+use App\Services\CropsService;
 use Illuminate\Http\Request;
 
-class FarmSizeUnitController extends Controller
+class CropStatus extends Controller
 {
     /**
-     * Get List of Farm Size Units
+     * Get List of Crops Statuses
      * @OA\Get (
-     *     path="/api/farm-size-units",
+     *     path="/api/farmer/crop-statuses",
      *     tags={"Farmers' Module"},
      *     security={{"sanctum":{}}},
-     *     operationId="farmSizeUnitsList",
+     *     operationId="cropsStatusesList",
      *     @OA\Parameter(
      *         name="sort_field",
      *         in="query",
@@ -23,7 +23,7 @@ class FarmSizeUnitController extends Controller
      *         example="id"
      *     ),
      *     @OA\Parameter(
-     *         name="sort_type",
+     *         name="sort_type (asc or desc)",
      *         in="query",
      *         description="A list of things.",
      *         required=false,
@@ -32,16 +32,16 @@ class FarmSizeUnitController extends Controller
      *     @OA\Parameter(
      *         name="limit",
      *         in="query",
-     *         description="number of states to return per page",
+     *         description="number of states to return per page (-1 for all)",
      *         required=false,
      *         example="-1"
      *     ),
      *     @OA\Parameter(
      *         name="search",
      *         in="query",
-     *         description="Search term (state name)",
+     *         description="Search term (status name)",
      *         required=false,
-     *         example="acres"
+     *         example="irrigation"
      *     ),
      *      @OA\Response(
      *          response=200,
@@ -59,9 +59,9 @@ class FarmSizeUnitController extends Controller
      *      )
      * )
      */
-    public function index(Request $request, FarmSizeUnitService $service): \Illuminate\Http\JsonResponse
+    public function index(Request $request, CropsService $service): \Illuminate\Http\JsonResponse
     {
-        return $service->farmSizeUnitList($request);
+        return $service->cropStatuses($request);
     }
 
     /**

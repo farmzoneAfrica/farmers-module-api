@@ -12,8 +12,9 @@ class CropsController extends Controller
     /**
      * Get List of Crops
      * @OA\Get (
-     *     path="/api/crops",
-     *     tags={"States"},
+     *     path="/api/farmer/crops",
+     *     tags={"Farmers' Module"},
+     *     security={{"sanctum":{}}},
      *     operationId="cropsList",
      *     @OA\Parameter(
      *         name="sort_field",
@@ -23,7 +24,7 @@ class CropsController extends Controller
      *         example="id"
      *     ),
      *     @OA\Parameter(
-     *         name="sort_type",
+     *         name="sort_type (asc or desc)",
      *         in="query",
      *         description="A list of things.",
      *         required=false,
@@ -32,14 +33,14 @@ class CropsController extends Controller
      *     @OA\Parameter(
      *         name="limit",
      *         in="query",
-     *         description="number of states to return per page",
+     *         description="number of states to return per page (-1 for all)",
      *         required=false,
      *         example="-1"
      *     ),
      *     @OA\Parameter(
      *         name="search",
      *         in="query",
-     *         description="Search term (state name)",
+     *         description="Search term (crop name)",
      *         required=false,
      *         example="cassava"
      *     ),

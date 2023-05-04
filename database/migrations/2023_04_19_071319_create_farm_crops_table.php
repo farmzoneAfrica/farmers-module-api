@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('farm_crops', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('farm_id');
-            $table->foreignId('crop_id');
-            $table->foreignId('crop_status_id');
+            $table->foreignIdFor(\App\Models\Farm::class);
+            $table->foreignIdFor(\App\Models\Crop::class);
+            $table->foreignIdFor(\App\Models\CropStatus::class);
             $table->date('last_changed');
             $table->timestamps();
         });

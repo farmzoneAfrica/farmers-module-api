@@ -45,6 +45,6 @@ class VerifyLoginCodeController extends BaseController
         $validate = Otp::setKey('login')->validate(auth()->user()->id, $request->otp);
         if (!$validate->status) return $this->sendError($validate->message);
         auth()->user()->currentAccessToken()->delete();
-        return $this->sendResponse('OTP validated', '', auth()->user()->createToken('auth')->plainTextToken);
+        return $this->sendResponse('OTP validated', '', auth()->user()->createToken('farmer-auth')->plainTextToken);
     }
 }

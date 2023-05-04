@@ -497,10 +497,166 @@
                 ]
             }
         },
+        "/api/farmer/crop-statuses": {
+            "get": {
+                "tags": [
+                    "Farmers' Module"
+                ],
+                "summary": "Get List of Crops Statuses",
+                "operationId": "cropsStatusesList",
+                "parameters": [
+                    {
+                        "name": "sort_field",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "id"
+                    },
+                    {
+                        "name": "sort_type (asc or desc)",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "asc"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "number of states to return per page (-1 for all)",
+                        "required": false,
+                        "example": "-1"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search term (status name)",
+                        "required": false,
+                        "example": "irrigation"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/farmer/crops": {
+            "get": {
+                "tags": [
+                    "Farmers' Module"
+                ],
+                "summary": "Get List of Crops",
+                "operationId": "cropsList",
+                "parameters": [
+                    {
+                        "name": "sort_field",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "id"
+                    },
+                    {
+                        "name": "sort_type (asc or desc)",
+                        "in": "query",
+                        "description": "A list of things.",
+                        "required": false,
+                        "example": "asc"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "number of states to return per page (-1 for all)",
+                        "required": false,
+                        "example": "-1"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Search term (crop name)",
+                        "required": false,
+                        "example": "cassava"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/farm-size-units": {
             "get": {
                 "tags": [
-                    "Farm Size Units"
+                    "Farmers' Module"
                 ],
                 "summary": "Get List of Farm Size Units",
                 "operationId": "farmSizeUnitsList",
@@ -567,7 +723,12 @@
                             }
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/api/states": {

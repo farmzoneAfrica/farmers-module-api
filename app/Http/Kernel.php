@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
         'onboarding.access' => \App\Http\Middleware\OnboardingAccess::class,
         'forgot.password.access' => \App\Http\Middleware\ForgotPasswordAccess::class,
+        'farmer.logged.in' => \App\Http\Middleware\FarmerLoggedIn::class,
     ];
 }
