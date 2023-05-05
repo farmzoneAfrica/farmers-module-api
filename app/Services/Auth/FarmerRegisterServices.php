@@ -39,6 +39,7 @@ class FarmerRegisterServices extends BaseController
     public function verifyOTP(RegisterVerifyOTPRequest $request): JsonResponse
     {
         $verify = Otp::setKey('farmer-reg')->validate(auth()->user()->id, $request->otp);
+        //auth()->user()->currentAccessToken()->delete();
         return ($verify->status)
             ? $this->sendResponse($verify->message)
             : $this->sendError($verify->message);

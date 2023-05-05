@@ -12,7 +12,7 @@ class OnboardingAccess
     {
         if (Auth::check())  {
             $token_name = request()->user()->currentAccessToken()->name;
-            return $token_name == 'x-onboarding-token' ? $next($request) : response()->json(['message'=>'Unauthenticated.']);
+            return $token_name == 'x-onboarding-token' ? $next($request) : response()->json(['message'=>'Unauthenticated.'], 401);
         }
 
         return $next($request);

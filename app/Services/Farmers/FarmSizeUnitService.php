@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Farmers;
 
 use App\Models\FarmSizeUnit;
+use App\Services\BaseService;
 use Illuminate\Http\Request;
 
 class FarmSizeUnitService extends BaseService

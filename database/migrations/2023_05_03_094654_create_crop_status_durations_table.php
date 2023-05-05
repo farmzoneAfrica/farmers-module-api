@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('crop_status_durations', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Crop::class);
+            $table->foreignIdFor(\App\Models\CropStatus::class);
+            $table->integer('order');
+            $table->boolean('is_final')->default(0);
             $table->integer('duration')->nullable()->comment('in days');
             $table->timestamps();
         });

@@ -1,34 +1,31 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Farmers;
 
-use App\Models\FaceBiometric;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnrollFaceIdRequest extends FormRequest
+class CreateFarmPostRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-
     public function rules(): array
     {
         return [
-            'user_code' => ['required','unique:'.FaceBiometric::class, 'exists:users,code'],
-            'provider' => 'required',
-            'facial_id' => 'required|unique:'.FaceBiometric::class,
-            'date_enrolled' => 'required',
-            'gender' => 'required',
-            'age' => 'required',
-            'bio_data' => 'required',
+            'crops' => 'required|array',
+            'name' => 'required|string|min:5',
+            'location_address'=>'required|string',
+            'longitude' => 'required|string',
+            'latitude' => 'required|string',
+            'landmark' => '',
+            'size' => 'required',
+            'size_unit' => 'required|exists:farm_size_units,id|integer',
+            'status' => 'required'
         ];
     }
 
@@ -42,7 +39,7 @@ class EnrollFaceIdRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'profile_photo' => 'profile photo'
+
         ];
     }
 

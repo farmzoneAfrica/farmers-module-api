@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Farmers;
 
 use App\Http\Controllers\Controller;
-use App\Services\CropsService;
-use App\Services\StateService;
+use App\Services\Farmers\CropsService;
 use Illuminate\Http\Request;
 
 class CropsController extends Controller

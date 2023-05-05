@@ -57,7 +57,7 @@ class StateService extends BaseService
 
     public function wards(Request $request, $lga_id)
     {
-        $wards = Ward::where('lga_id', '=', $lga_id) ->where(function ($query) use ($request) {
+        $wards = Ward::where('local_government_id', '=', $lga_id) ->where(function ($query) use ($request) {
             return $query->when($request->filled('search'), function ($query) use ($request) {
                 return $query->where('name', 'LIKE', "%{$request->search}%");
             });

@@ -21,7 +21,7 @@ Route::prefix('farmer')->group(function () {
     Route::post('login/face-id', \App\Http\Controllers\Auth\Farmer\FaceLoginController::class)->middleware('guest')->name('login.face.id');
 
     Route::get('login', function () {
-        return response()->json(['message'=>'Unauthenticated']);
+        return response()->json(['message'=>'Unauthenticated'], 401);
     })->middleware('guest')->name('login.get');
 
     Route::post('verify-login-code', \App\Http\Controllers\Auth\Farmer\VerifyLoginCodeController::class)->middleware(['auth:sanctum']);

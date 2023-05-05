@@ -12,7 +12,7 @@ class ForgotPasswordAccess
     {
         if (Auth::check())  {
             $token_name = request()->user()->currentAccessToken()->name;
-            return $token_name == 'forgot-password' ? $next($request) : response()->json(['message'=>'Unauthenticated.']);
+            return $token_name == 'forgot-password' ? $next($request) : response()->json(['message'=>'Unauthenticated.'], 401);
         }
 
         return $next($request);

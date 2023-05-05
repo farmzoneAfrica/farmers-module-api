@@ -28,7 +28,7 @@ class ApexaService
 
     private function generateReference(): void
     {
-        $this->reference = 'NOVA-'.time().time();
+        $this->reference = 'NOVEL.AG-'.time().time();
     }
 
     private function getOtpTemplateCode(): void

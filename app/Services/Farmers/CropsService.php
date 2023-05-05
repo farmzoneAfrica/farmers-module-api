@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Farmers;
 
 use App\Models\Crop;
 use App\Models\CropStatus;
 use App\Models\FarmCrop;
+use App\Services\BaseService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -60,10 +61,19 @@ class CropsService extends BaseService
     {
         $farm_crops = FarmCrop::where(function ($query) use ($request) {
             return $query->when($request->filled('search'), function ($query) use ($request) {
-                $query->where('farm_id', '=', $request->farm_id);
-                $query->where('crop_id', '=', $request->crop_id);
-                $query->where('crop_status_id', '=', $request->crop_status_id);
                 return $query->where('name', 'LIKE', "%{$request->search}%");
+            });
+        })->where(function ($query) use ($request) {
+            return $query->when($request->filled('farm_id'), function ($query) use ($request) {
+                return $query->where('farm_id', '=', $request->farm_id);
+            });
+        })->where(function ($query) use ($request) {
+            return $query->when($request->filled('crop_id'), function ($query) use ($request) {
+                return $query->where('crop_id', '=', $request->crop_id);
+            });
+        })->where(function ($query) use ($request) {
+            return $query->when($request->filled('crop_status_id'), function ($query) use ($request) {
+                return $query->where('crop_status_id', '=', $request->crop_status_id);
             });
         });
 

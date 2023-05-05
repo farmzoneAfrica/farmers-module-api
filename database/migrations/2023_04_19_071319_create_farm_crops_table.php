@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Crop::class);
             $table->foreignIdFor(\App\Models\CropStatus::class);
             $table->date('last_changed');
+            $table->date('date_completed')->nullable();
+            $table->boolean('is_complete')->default(0);
             $table->timestamps();
         });
     }

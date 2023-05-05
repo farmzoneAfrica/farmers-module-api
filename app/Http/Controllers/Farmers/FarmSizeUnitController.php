@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Farmers;
 
 use App\Http\Controllers\Controller;
-use App\Services\FarmSizeUnitService;
+use App\Services\Farmers\FarmSizeUnitService;
 use Illuminate\Http\Request;
 
 class FarmSizeUnitController extends Controller

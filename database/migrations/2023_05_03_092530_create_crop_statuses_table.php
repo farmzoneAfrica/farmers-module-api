@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('crop_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('order');
-            $table->boolean('is_final')->default(0);
             $table->timestamps();
         });
     }
