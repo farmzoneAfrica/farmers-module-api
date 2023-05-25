@@ -52,7 +52,7 @@ class VerifyLoginCodeController extends BaseController
             return $this->sendError('Invalid Pin');
         }
 
-        //auth()->user()->tokens()->delete();
+        auth()->user()->tokens()->delete();
         return $this->sendResponse(auth()->user(), '', auth()->user()->createToken('farmer-auth')->plainTextToken);
     }
 }
