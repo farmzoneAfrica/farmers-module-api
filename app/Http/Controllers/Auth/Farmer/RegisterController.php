@@ -174,110 +174,11 @@ class RegisterController extends BaseController
         return $services->changePhoneNumber($request);
     }
 
-    /**
-     * Enroll Face ID
-     * @OA\Post (
-     *     path="/api/auth/farmer/enroll-face-id",
-     *     tags={"Farmer Onboarding"},
-     *     security={{"sanctum":{}}},
-     *     operationId="farmerEnrollFaceId",
-     *     @OA\RequestBody(
-     *         @OA\MediaType(
-     *             mediaType="application/json",
-     *             @OA\Schema(
-     *                 @OA\Property(
-     *                     property="user_code",
-     *                     type="string"
-     *                 ),
-     *                  @OA\Property(
-     *                     property="facial_id",
-     *                     type="string"
-     *                 ),
-     *                  @OA\Property(
-     *                     property="date_enrolled",
-     *                     type="datetime"
-     *                 ),
-     *                  @OA\Property(
-     *                     property="age",
-     *                     type="string"
-     *                 ),
-     *                  @OA\Property(
-     *                     property="gender",
-     *                     type="string"
-     *                 ),
-     *                 @OA\Property(
-     *                     property="bio_data",
-     *                     type="string"
-     *                 ),
- *                      @OA\Property(
-     *                     property="provider",
-     *                     type="string"
-     *                 ),
-     *
-     *                 example={"user_code": "6N9CzNQdtylNTxFKXf5mbWDHE61UTq",
-     *                              "facial_id": "facial_id from faceio",
-     *                              "date_enrolled": "",
-     *                              "age": "56",
-     *                              "gender": "male",
-     *                              "bio_data": "json data from provider (faceio)",
-     *                              "provider": "faceio",
-     *                  }
-     *             ),
-     *         )
-     *     ),
-     *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
-     *      @OA\Response(
-     *          response=401,
-     *          description="unauthorized",
-     *          @OA\JsonContent(
-     *              @OA\Property(),
-     *          )
-     *      )
-     * )
-     * @param FarmerRegisterServices $services
-     * @return JsonResponse
-     */
     public function enrollFaceId(EnrollFaceIdRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->enrollFaceId($request);
     }
 
-    /**
-     * Update KYC
-     * @OA\Post (
-     *     path="/api/auth/farmer/kyc",
-     *     tags={"Farmer Onboarding"},
-     *     security={{"sanctum":{}}},
-     *     operationId="farmerRegistrationKYC",
-     *     @OA\RequestBody(
-     *         @OA\MediaType(
-     *             mediaType="multipart/form-data",
-     *             @OA\Schema(
-     *                 @OA\Property(
-     *                     property="profile_photo",
-     *                     type="file"
-     *                 ),
-     *                  @OA\Property(
-     *                     property="biometric",
-     *                     type="string"
-     *                 ),
-     *                 example={"profile_photo": "", "biometric": "base64 data"}
-     *             ),
-     *         )
-     *     ),
-     *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
-     *      @OA\Response(
-     *          response=401,
-     *          description="unauthorized",
-     *          @OA\JsonContent(
-     *              @OA\Property(),
-     *          )
-     *      )
-     * )
-     * @param StoreKycRequest $request
-     * @param FarmerRegisterServices $services
-     * @return JsonResponse
-     */
     public function kyc(StoreKycRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->updateKyc($request);

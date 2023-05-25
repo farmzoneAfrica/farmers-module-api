@@ -13,7 +13,7 @@ use Seshac\Otp\Otp;
 class VerifyLoginCodeController extends BaseController
 {
     /**
-     * Verify Farmer Login OTP
+     * Verify Farmer Login PIN
      * @OA\Post (
      *     path="/api/auth/farmer/verify-pin-code",
      *     tags={"Farmer Auth"},
