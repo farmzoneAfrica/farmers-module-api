@@ -283,6 +283,42 @@ class RegisterController extends BaseController
         return $services->updateKyc($request);
     }
 
+    /**
+     * Set Farmer PIN
+     * @OA\Post (
+     *     path="/api/auth/farmer/set-pin",
+     *     tags={"Farmer Onboarding"},
+     *     security={{"sanctum":{}}},
+     *     operationId="farmerSetPin",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="pin",
+     *                     type="string"
+     *                 ),
+     *                  @OA\Property(
+     *                     property="confirm_pin",
+     *                     type="string"
+     *                 ),
+     *                 example={"pin": "4125", "confirm_pin":"4125"}
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Successful created", @OA\JsonContent()),
+     *      @OA\Response(
+     *          response=401,
+     *          description="unauthorized",
+     *          @OA\JsonContent(
+     *              @OA\Property(),
+     *          )
+     *      )
+     * )
+     * @param RegisterVerifyOTPRequest $request
+     * @param FarmerRegisterServices $services
+     * @return JsonResponse
+     */
     public function setPin(SetPinRequest $request, FarmerRegisterServices $services)
     {
         return $services->setPin($request);

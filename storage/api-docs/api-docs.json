@@ -448,6 +448,64 @@
                 ]
             }
         },
+        "/api/auth/farmer/set-pin": {
+            "post": {
+                "tags": [
+                    "Farmer Onboarding"
+                ],
+                "summary": "Set Farmer PIN",
+                "operationId": "farmerSetPin",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "pin": {
+                                        "type": "string"
+                                    },
+                                    "confirm_pin": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "pin": "4125",
+                                    "confirm_pin": "4125"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/auth/farmer/verify-login-code": {
             "post": {
                 "tags": [
