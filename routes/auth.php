@@ -10,24 +10,23 @@ use Illuminate\Support\Facades\Route;
 
 /*Farmer's Onboarding*/
 Route::prefix('farmer')->group(function () {
+    /*Registration*/
     Route::post('register', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'index']);
     Route::post('verify-otp', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'verifyOTP'])->middleware(['auth:sanctum', 'onboarding.access']);
     Route::get('resend-otp', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'resendOTP'])->middleware(['auth:sanctum', 'onboarding.access']);
     Route::post('change-phone', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'changePhoneNumber'])->middleware(['auth:sanctum', 'onboarding.access']);
     Route::post('set-pin', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'setPin'])->middleware(['auth:sanctum', 'onboarding.access']);
 
-    Route::post('kyc', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'kyc'])->middleware(['auth:sanctum', 'onboarding.access']);
+    //Route::post('kyc', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'kyc'])->middleware(['auth:sanctum', 'onboarding.access']);
+    //Route::post('enroll-face-id', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'enrollFaceId'])->middleware(['auth:sanctum', 'onboarding.access']);
 
-    Route::post('enroll-face-id', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'enrollFaceId'])->middleware(['auth:sanctum', 'onboarding.access']);
-
+    /*Login*/
     Route::post('login', \App\Http\Controllers\Auth\Farmer\LoginController::class)->middleware('guest')->name('login');
-    Route::post('login/face-id', \App\Http\Controllers\Auth\Farmer\FaceLoginController::class)->middleware('guest')->name('login.face.id');
+    Route::post('verify-pin-code', \App\Http\Controllers\Auth\Farmer\VerifyLoginCodeController::class)->middleware(['auth:sanctum']);
 
     Route::get('login', function () {
         return response()->json(['message'=>'Unauthenticated'], 401);
     })->middleware('guest')->name('login.get');
-
-    Route::post('verify-login-code', \App\Http\Controllers\Auth\Farmer\VerifyLoginCodeController::class)->middleware(['auth:sanctum']);
 
 });
 

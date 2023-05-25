@@ -25,10 +25,10 @@ class LoginController extends BaseController
      *             mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="phone",
+     *                     property="login",
      *                     type="string"
      *                 ),
-     *                 example={"phone": "08012345678"}
+     *                 example={"login": "08012345678"}
      *             )
      *         )
      *     ),
@@ -45,15 +45,11 @@ class LoginController extends BaseController
      */
     public function __invoke(LoginRequest $request)
     {
-        $user = User::where('phone', $request->phone)->first();
+        $user = User::where('phone', $request->login)->orWhere('email', $request->login)->first();
         if (!$user) {
-            return $this->sendError('Invalid Phone');
+            return $this->sendError('User not found');
         }
 
-        //send otp
-        $otp = Otp::setKey('login')->generate($user->id);
-        $apexa = new ApexaService($otp->token, $request->phone);
-        $apexa->send();
-        return $this->sendResponse('OTP Sent', '', $user->createToken('login-otp')->plainTextToken);
+        return $this->sendResponse('User found', '', $user->createToken('login-pin')->plainTextToken);
     }
 }

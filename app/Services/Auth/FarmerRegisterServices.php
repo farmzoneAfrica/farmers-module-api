@@ -119,7 +119,7 @@ class FarmerRegisterServices extends BaseController
         $user = User::find(auth()->user()->id);
         $user->pin = $request->pin;
         $user->save();
-
+        $user->tokens()->delete();
         return $this->sendResponse('', 'Pin set successfully');
     }
 }

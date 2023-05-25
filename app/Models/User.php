@@ -32,6 +32,7 @@ class User extends Authenticatable implements JWTSubject
         'accept_terms',
         'profile_picture',
         'ip',
+        'pin',
         'phone_verified_at'
     ];
 
@@ -43,6 +44,7 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password',
         'remember_token',
+        'pin'
     ];
 
     /**

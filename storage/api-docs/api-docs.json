@@ -66,13 +66,13 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "phone": {
+                                    "login": {
                                         "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "phone": "08012345678"
+                                    "login": "08012345678"
                                 }
                             }
                         }
