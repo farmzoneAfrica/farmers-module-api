@@ -506,25 +506,29 @@
                 ]
             }
         },
-        "/api/auth/farmer/verify-login-code": {
+        "/api/auth/farmer/verify-pin-code": {
             "post": {
                 "tags": [
                     "Farmer Auth"
                 ],
                 "summary": "Verify Farmer Login OTP",
-                "operationId": "farmerVerifyLoginOtp",
+                "operationId": "farmerVerifyLoginPin",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "otp": {
+                                    "pin": {
+                                        "type": "string"
+                                    },
+                                    "confirm_pin": {
                                         "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "otp": "407353"
+                                    "pin": "4125",
+                                    "confirm_pin": "4125"
                                 }
                             }
                         }

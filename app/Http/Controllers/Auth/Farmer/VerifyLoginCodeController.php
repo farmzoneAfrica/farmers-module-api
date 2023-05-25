@@ -15,19 +15,23 @@ class VerifyLoginCodeController extends BaseController
     /**
      * Verify Farmer Login OTP
      * @OA\Post (
-     *     path="/api/auth/farmer/verify-login-code",
+     *     path="/api/auth/farmer/verify-pin-code",
      *     tags={"Farmer Auth"},
      *     security={{"sanctum":{}}},
-     *     operationId="farmerVerifyLoginOtp",
+     *     operationId="farmerVerifyLoginPin",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     property="otp",
+     *                     property="pin",
      *                     type="string"
      *                 ),
-     *                 example={"otp": "407353"}
+     *                  @OA\Property(
+     *                     property="confirm_pin",
+     *                     type="string"
+     *                 ),
+     *                 example={"pin": "4125", "confirm_pin":"4125"}
      *             )
      *         )
      *     ),
