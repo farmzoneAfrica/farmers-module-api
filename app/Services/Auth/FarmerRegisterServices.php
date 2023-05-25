@@ -9,6 +9,7 @@ use App\Http\Requests\Auth\Farmer\RegisterVerifyOTPRequest;
 use App\Http\Requests\Auth\Farmer\StoreKycRequest;
 use App\Http\Requests\Auth\Farmer\RegisterRequest;
 use App\Http\Requests\EnrollFaceIdRequest;
+use App\Http\Requests\SetPinRequest;
 use App\Models\FaceBiometric;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -111,5 +112,14 @@ class FarmerRegisterServices extends BaseController
         ]);
 
         echo $response->getBody();
+    }
+
+    public function setPin(SetPinRequest $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->pin = $request->pin;
+        $user->save();
+
+        return $this->sendResponse('', 'Pin set successfully');
     }
 }

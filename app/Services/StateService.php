@@ -11,8 +11,7 @@ use Illuminate\Http\Request;
 
 class StateService extends BaseService
 {
-    public function states(Request $request)
-    {
+    public function states(Request $request) {
         $states = State::where(function ($query) use ($request) {
             return $query->when($request->filled('search'), function ($query) use ($request) {
                 return $query->where('name', 'LIKE', "%{$request->search}%");
@@ -21,7 +20,6 @@ class StateService extends BaseService
 
         $totalRows = $states->count();
         if($this->perPage == "-1") $this->perPage = $totalRows;
-
         $states = $states->offset($this->offSet)
             ->limit($this->perPage)
             ->orderBy($this->order, $this->dir)

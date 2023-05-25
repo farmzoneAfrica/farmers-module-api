@@ -2,13 +2,12 @@
 
 namespace App\Http\Requests;
 
-use App\Models\FaceBiometric;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnrollFaceIdRequest extends FormRequest
+class SetPinRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,31 +17,22 @@ class EnrollFaceIdRequest extends FormRequest
         return false;
     }
 
-
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     */
     public function rules(): array
     {
         return [
-            'user_code' => ['required','unique:'.FaceBiometric::class, 'exists:users,code'],
-            'provider' => 'required',
-            'facial_id' => 'required|unique:'.FaceBiometric::class,
-            'date_enrolled' => 'required',
-            'gender' => 'required',
-            'age' => 'required',
-            'bio_data' => 'required',
+            'pin' => 'required|confirmed',
         ];
     }
 
     public function messages(): array
     {
         return [
-
-        ];
-    }
-
-    public function attributes(): array
-    {
-        return [
-            'profile_photo' => 'profile photo'
+            'pin.required'=>'Pin is required.'
         ];
     }
 

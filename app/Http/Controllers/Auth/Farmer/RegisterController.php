@@ -8,6 +8,7 @@ use App\Http\Requests\Auth\Farmer\RegisterVerifyOTPRequest;
 use App\Http\Requests\Auth\Farmer\StoreKycRequest;
 use App\Http\Requests\Auth\Farmer\RegisterRequest;
 use App\Http\Requests\EnrollFaceIdRequest;
+use App\Http\Requests\SetPinRequest;
 use App\Services\Auth\FarmerRegisterServices;
 use Illuminate\Http\JsonResponse;
 
@@ -280,5 +281,10 @@ class RegisterController extends BaseController
     public function kyc(StoreKycRequest $request, FarmerRegisterServices $services): JsonResponse
     {
         return $services->updateKyc($request);
+    }
+
+    public function setPin(SetPinRequest $request, FarmerRegisterServices $services)
+    {
+        return $services->setPin($request);
     }
 }

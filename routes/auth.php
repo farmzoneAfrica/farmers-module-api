@@ -14,7 +14,10 @@ Route::prefix('farmer')->group(function () {
     Route::post('verify-otp', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'verifyOTP'])->middleware(['auth:sanctum', 'onboarding.access']);
     Route::get('resend-otp', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'resendOTP'])->middleware(['auth:sanctum', 'onboarding.access']);
     Route::post('change-phone', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'changePhoneNumber'])->middleware(['auth:sanctum', 'onboarding.access']);
+    Route::post('set-pin', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'setPin'])->middleware(['auth:sanctum', 'onboarding.access']);
+
     Route::post('kyc', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'kyc'])->middleware(['auth:sanctum', 'onboarding.access']);
+
     Route::post('enroll-face-id', [\App\Http\Controllers\Auth\Farmer\RegisterController::class, 'enrollFaceId'])->middleware(['auth:sanctum', 'onboarding.access']);
 
     Route::post('login', \App\Http\Controllers\Auth\Farmer\LoginController::class)->middleware('guest')->name('login');
