@@ -25,7 +25,8 @@ class VerifyLoginPinRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'pin' => 'required'
+            'pin' => 'required',
+            'confirm_pin' => 'required|same:pin'
         ];
     }
 
