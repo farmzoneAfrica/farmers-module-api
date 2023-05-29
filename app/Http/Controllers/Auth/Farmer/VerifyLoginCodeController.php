@@ -27,11 +27,7 @@ class VerifyLoginCodeController extends BaseController
      *                     property="pin",
      *                     type="string"
      *                 ),
-     *                  @OA\Property(
-     *                     property="confirm_pin",
-     *                     type="string"
-     *                 ),
-     *                 example={"pin": "4125", "confirm_pin":"4125"}
+     *                 example={"pin": "4125"}
      *             )
      *         )
      *     ),

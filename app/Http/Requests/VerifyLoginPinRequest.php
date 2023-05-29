@@ -26,7 +26,6 @@ class VerifyLoginPinRequest extends FormRequest
     {
         return [
             'pin' => 'required',
-            'confirm_pin' => 'required|same:pin'
         ];
     }
 
