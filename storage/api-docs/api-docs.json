@@ -335,15 +335,11 @@
                                 "properties": {
                                     "pin": {
                                         "type": "string"
-                                    },
-                                    "confirm_pin": {
-                                        "type": "string"
                                     }
                                 },
                                 "type": "object",
                                 "example": {
-                                    "pin": "4125",
-                                    "confirm_pin": "4125"
+                                    "pin": "4125"
                                 }
                             }
                         }
