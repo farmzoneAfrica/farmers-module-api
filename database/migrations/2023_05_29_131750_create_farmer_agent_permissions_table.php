@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crops', function (Blueprint $table) {
+        Schema::create('farmer_agent_permissions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('maturity')->comment('no. of days');
-            //TODO
-            $table->enum('status', ['active', 'inactive']);
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('crops');
+        Schema::dropIfExists('farmer_agent_permissions');
     }
 };

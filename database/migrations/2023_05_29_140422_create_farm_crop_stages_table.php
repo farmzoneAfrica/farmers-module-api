@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crops', function (Blueprint $table) {
+        Schema::create('farm_crop_stages', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('maturity')->comment('no. of days');
-            //TODO
-            $table->enum('status', ['active', 'inactive']);
+            $table->unsignedBigInteger('crop_id');
+            $table->unsignedBigInteger('stage_id');
+            $table->integer('days_from');
+            $table->integer('days_to');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('crops');
+        Schema::dropIfExists('farm_crop_stages');
     }
 };
