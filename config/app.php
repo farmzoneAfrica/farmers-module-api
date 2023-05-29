@@ -215,6 +215,6 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
-    ])->toArray(),
+    ])->toArray()
 
 ];
