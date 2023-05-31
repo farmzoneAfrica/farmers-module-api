@@ -24,6 +24,14 @@ Route::prefix('farmer')->group(function () {
     Route::post('login', \App\Http\Controllers\Auth\Farmer\LoginController::class)->middleware('guest')->name('login');
     Route::post('verify-pin-code', \App\Http\Controllers\Auth\Farmer\VerifyLoginCodeController::class)->middleware(['auth:sanctum']);
 
+    Route::post('forgot-pin', \App\Http\Controllers\Auth\Farmer\ForgotPinController::class)->middleware('guest')->name('forgot.pin');
+    Route::post('verify-forgot-pin-otp', \App\Http\Controllers\Auth\Farmer\VerifyForgotPinOtpController::class)->middleware(['auth:sanctum', 'forgot.pin.access']);
+    Route::put('reset-pin', \App\Http\Controllers\Auth\Farmer\ResetPinController::class)->middleware(['auth:sanctum', 'forgot.pin.access']);
+
+
+
+
+
     Route::get('login', function () {
         return response()->json(['message'=>'Unauthenticated'], 401);
     })->middleware('guest')->name('login.get');

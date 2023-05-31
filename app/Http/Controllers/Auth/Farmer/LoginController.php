@@ -47,9 +47,9 @@ class LoginController extends BaseController
     {
         $user = User::where('phone', $request->login)->orWhere('email', $request->login)->first();
         if (!$user) {
-            return $this->sendError('User not found');
+            return $this->sendError('Sorry, we do not have that detail registered.');
         }
 
-        return $this->sendResponse('User found', '', $user->createToken('login-pin')->plainTextToken);
+        return $this->sendResponse('Detail found, proceed to confirm PIN', '', $user->createToken('login-pin')->plainTextToken);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class VerifyForgotPasswordCodeRequest extends FormRequest
+class ResetPinRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -17,19 +17,18 @@ class VerifyForgotPasswordCodeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'otp' => 'required|exists:otps,token'
+            'pin' => 'required',
+            'confirm_pin' => 'same:pin',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'otp.required'=>'OTP is required.',
-            'otp.exists'=>'Invalid OTP',
+            'pin.required'=>'Pin is required.',
+            'confirm_pin.required'=>'Confirm Pin is required.',
         ];
     }
-
-
 
     public function failedValidation(Validator $validator)
     {

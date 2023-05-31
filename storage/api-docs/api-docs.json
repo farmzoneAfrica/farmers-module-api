@@ -6,6 +6,50 @@
         "version": "1.0"
     },
     "paths": {
+        "/api/auth/farmer/forgot-pin": {
+            "post": {
+                "tags": [
+                    "Farmer Auth"
+                ],
+                "summary": "Farmer Forgot PIN",
+                "operationId": "farmerForgotPin",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "phone": "08012345678"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/auth/farmer/login": {
             "post": {
                 "tags": [
@@ -307,6 +351,108 @@
                                 "schema": {
                                     "properties": {
                                         "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/farmer/reset-pin": {
+            "post": {
+                "tags": [
+                    "Farmer Auth"
+                ],
+                "summary": "Farmer Forgot PIN",
+                "operationId": "farmerResetPin",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "otp": {
+                                        "type": "string"
+                                    },
+                                    "confirm_pin": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "pin": "1237",
+                                    "confirm_pin": "1237"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/farmer/verify-forgot-pin-otp": {
+            "post": {
+                "tags": [
+                    "Farmer Auth"
+                ],
+                "summary": "Farmer Forgot PIN",
+                "operationId": "farmerVerifyForgotPinOtp",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "otp": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "otp": "1237"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "false"
+                                        }
                                     },
                                     "type": "object"
                                 }

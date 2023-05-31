@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
-class VerifyForgotPasswordCodeRequest extends FormRequest
+class VerifyForgotPinOtpRequest extends FormRequest
 {
     public function authorize(): bool
     {
