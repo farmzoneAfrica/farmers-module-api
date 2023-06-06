@@ -43,7 +43,7 @@ class ForgotPinController extends BaseController
     public function __invoke(ForgotPinRequest $request) {
         $user = User::where('phone', $request->phone)->first();
         if (!$user) return $this->sendError('Phone number not found');
-        $otp = Otp::setValidity(30)
+        $otp = Otp::setValidity(10000)
             ->setKey('forgot-pin')
             ->setLength(4)
             ->setMaximumOtpsAllowed(10)

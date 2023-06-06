@@ -19,7 +19,7 @@ return [
     | By default = 6 digits used
     |
     */
-    'length' => env('OPT_LENGTH', 6),
+    'length' => env('OPT_LENGTH', 4),
 
     /*
     |--------------------------------------------------------------------------
