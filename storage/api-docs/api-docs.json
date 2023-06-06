@@ -94,6 +94,43 @@
                 }
             }
         },
+        "/api/auth/farmer/logout": {
+            "get": {
+                "tags": [
+                    "Farmer Logout"
+                ],
+                "summary": "Farmer Logout",
+                "operationId": "farmerLogout",
+                "responses": {
+                    "200": {
+                        "description": "Successful created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/auth/farmer/register": {
             "post": {
                 "tags": [

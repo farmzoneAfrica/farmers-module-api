@@ -12,7 +12,7 @@ class LogoutController extends BaseController
     /**
      * Farmer Logout
      * @OA\Get (
-     *     path="/api/auth/farmer/logout,
+     *     path="/api/auth/farmer/logout",
      *     tags={"Farmer Logout"},
      *     security={{"sanctum":{}}},
      *     operationId="farmerLogout",
