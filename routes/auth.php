@@ -27,6 +27,7 @@ Route::prefix('farmer')->group(function () {
     Route::post('forgot-pin', \App\Http\Controllers\Auth\Farmer\ForgotPinController::class)->middleware('guest')->name('forgot.pin');
     Route::post('verify-forgot-pin-otp', \App\Http\Controllers\Auth\Farmer\VerifyForgotPinOtpController::class)->middleware(['auth:sanctum', 'forgot.pin.access']);
     Route::put('reset-pin', \App\Http\Controllers\Auth\Farmer\ResetPinController::class)->middleware(['auth:sanctum', 'forgot.pin.access']);
+    Route::get('logout', \App\Http\Controllers\Auth\Farmer\LoginController::class)->middleware('auth:sanctum')->name('farmer.logout.pin');
 
 
 
