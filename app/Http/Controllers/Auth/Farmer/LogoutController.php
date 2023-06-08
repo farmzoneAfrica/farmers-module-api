@@ -13,7 +13,7 @@ class LogoutController extends BaseController
      * Farmer Logout
      * @OA\Get (
      *     path="/api/auth/farmer/logout",
-     *     tags={"Farmer Logout"},
+     *     tags={"Farmer Auth"},
      *     security={{"sanctum":{}}},
      *     operationId="farmerLogout",
      *     @OA\Response(response=200, description="Successful created", @OA\JsonContent()),

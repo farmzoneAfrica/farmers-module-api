@@ -97,7 +97,7 @@
         "/api/auth/farmer/logout": {
             "get": {
                 "tags": [
-                    "Farmer Logout"
+                    "Farmer Auth"
                 ],
                 "summary": "Farmer Logout",
                 "operationId": "farmerLogout",
@@ -372,6 +372,43 @@
                         }
                     }
                 },
+                "responses": {
+                    "201": {
+                        "description": "Successful created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/farmer/resend-forgot-pin-otp": {
+            "get": {
+                "tags": [
+                    "Farmer Auth"
+                ],
+                "summary": "Regenerate OTP",
+                "operationId": "farmerForgotPinResendOtp",
                 "responses": {
                     "201": {
                         "description": "Successful created",

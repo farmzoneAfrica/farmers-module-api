@@ -20,7 +20,5 @@ Route::get('wards/{local_government_id}', [\App\Http\Controllers\StateController
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::get('user', function (Request $request) {
-        return $request->user();
-    });
+    Route::get('user',  [\App\Http\Controllers\Farmers\UserController::class, 'index']);
 });
