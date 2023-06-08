@@ -824,6 +824,43 @@
                 ]
             }
         },
+        "/api/farmer/user": {
+            "get": {
+                "tags": [
+                    "Farmer Profile"
+                ],
+                "summary": "Regenerate OTP",
+                "operationId": "farmerProfile",
+                "responses": {
+                    "201": {
+                        "description": "Successful created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {}
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/states": {
             "get": {
                 "tags": [

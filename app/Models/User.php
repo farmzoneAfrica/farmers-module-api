@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Bavix\Wallet\Models\Wallet;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -71,5 +73,15 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims(): array
     {
         return [];
+    }
+
+    public function farms(): HasMany
+    {
+        return $this->hasMany(Farm::class);
+    }
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class, 'holder_id', 'id');
     }
 }
